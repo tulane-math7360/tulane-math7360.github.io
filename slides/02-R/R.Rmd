@@ -1,0 +1,97 @@
+---
+title: "R Basics"
+author: "Dr. Xiang Ji @ Tulane University"
+date: "Aug 19, 2020"
+output:
+  html_document:
+    toc: true
+    toc_depth: 4  
+subtitle: MATH-7360 Data Analysis
+csl: ../apa.csl
+---
+
+## Computer storage
+
+- _bit_ = "binary" + "digit" (0 or 1)
+
+- _byte_ = 8 bits
+
+- kB = kilobyte = $10^3$ bytes
+
+- MB = megabytes = $10^6$ bytes
+
+- GB = gigabytes = $10^9$ bytes
+
+- TB = terabytes = $10^{12}$ bytes
+
+- PB = petabytes = $10^{15}$ bytes
+
+## Fixed-point number system
+
+Fixed-point number system is a computer model for integers.
+One storage unit may be $M = 8/16/32/64$ bit.
+
+- The first bit stores the sign of the integer (i.e. 0 for positive and 1 for negative)
+
+- The rest of the bits store the absolute value of the integer in binary
+
+- Range of representable integers by $M$-bit storage unit is $[-2^{M - 1}, 2^{M - 1} - 1]$ (don't need to represent $0$ anymore so could have capacity for $2^{M-1}$ negative numbers).
+
+- For $M=8$, $[-128, 127]$.  For $M=16$, $[-65536, 65535]$.  For $M=32$, $[-2147483648, 2147483647]$.
+
+```{r}
+.Machine$integer.max
+
+# integer type in R uses M=32 bits
+M <- 32
+big <- 2^(M-1) - 1
+small <- -2^(M-1)
+as.integer(big)
+as.integer(big + 1)
+as.integer(small + 1)
+as.integer(small)
+```
+
+- R's smallest integer is $-2^{31} + 1 = -2147483647$.
+
+*Keep track of overflow and underflow*.  If the result of a summation is $R$, which must be in the set $[-2^{M - 1}, 2^{M - 1} - 1]$, there are only three possibilities for the true sum: $R$, $R+2^M$ (overflow), or $R-2^M$ (underflow).
+
+
+## Floating-point number system
+
+Floating-point number system is a computer model for real numbers.
+
+<p align="center">
+  <img src="./float_example.png" height="90" width="700">
+</p>
+
+
+- A real is represented by $\mbox{value} = (-1)^{b_{31}} \times 2^{(b_{30} b_{29} \dots b_{23})_2 - 127} \times (1.b_{22} b_{21} \dots b_{0})_2$.
+
+- IEEE 754-1985 and IEEE 754-2008
+  
+  - _Single precision_ (32 bit): base $b = 2$, $p=23$ (23 significant bits), $e_{\mbox{max}}=127$, $e_{\mbox{min}}=-126$ (8 exponent bits), $\mbox{bias} = 127$.
+  This implies a maximum magnitude of $\log_{10}(2^{127}) \approx 38$ and precision to $\log_{10}(2^{23}) \approx 7$ decimal point. $\pm 10^{\pm38}$.
+  
+  - _Double precision_ (64 bit): base $b = 2$, $p=52$ (52 significant bits), $e_{\mbox{max}}=1023$, $e_{\mbox{min}}=-1022$ (11 exponent bits), $\mbox{bias} = 1023$.
+  This implies a maximum magnitude of $\log_{10}(2^{1023}) \approx 308$ and precision to $\log_{10}(2^{52}) \approx 16$ decimal point. $\pm 10^{\pm308}$.  
+  
+  - In the above example, $\mbox{value} =$
+  
+```{r}
+2^((2^2 + 2^3 + 2^4 + 2^5 + 2^6) - 127) * (1 + 2^(-2))
+```
+
+- R only uses double (64-bit) and 32-bit integer.  It can be a downside when dealing with big data.
+
+To summarize
+
+- Single precision: $\pm 10^{\pm38}$ with precision up to $7$ decimal digits.
+
+- Double precision: $\pm 10^{\pm308}$ with precision up to $16$ decimal digits.
+
+- The floating-point numbers do not occur uniformly over the real number line.
+
+- The variable $\mbox{.Machine}$ in R contains numerical characteristics of the machine.
+
+- How to test $\mbox{inf}$ and $\mbox{nan}$? In R

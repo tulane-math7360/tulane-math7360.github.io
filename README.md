@@ -1,6 +1,3 @@
----
-title: Math 7360 Data Analysis
----
 
 ## Math 7360 Data Analysis - Fall 2020
 

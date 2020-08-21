@@ -48,6 +48,11 @@ csl: ../apa.csl
   
   - (Optional) make a GitHub page for your project.
   
+### Dataset sources
+  - http://jmcauley.ucsd.edu/data/amazon/
+  - https://nijianmo.github.io/amazon/index.html
+  - https://cseweb.ucsd.edu/~jmcauley/datasets.html
+  
 ### Brief Description components
 
   - Introduce the dataset (data type, origin, etc).  Explain why you choose the dataset.  List some questions you want to explore with the dataset.

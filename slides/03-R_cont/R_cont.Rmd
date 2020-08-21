@@ -1,0 +1,83 @@
+---
+title: "R Basics (cont.)"
+author: "Dr. Xiang Ji @ Tulane University"
+date: "Aug 19, 2020"
+output:
+  html_document:
+    toc: true
+    toc_depth: 4  
+subtitle: MATH-7360 Data Analysis
+csl: ../apa.csl
+---
+
+## Announcement
+
+- Introduce yourself (grade point penalty?)
+
+- Lab sessions
+
+  - There will be recordings (when needed) in the future.
+  
+  - No need to submit the lab "work".
+  
+  - There will be "solutions" posted (after the following Monday lecture) for future lab sessions (when there are questions).
+
+- Project submission via GitHub
+
+- Homeword assignment starts week 2.  1st assignment due on week 4.  Expected frequency: bi-weekly.
+
+- Will provide optional reading material on Course Webpage.  (No poll for python, it will be provided through this mechanism)
+
+- Github page contains the most up-to-date materials.
+
+- Regret on sending multiple locations for posting GitHub ids.
+
+## Course Project
+
+  - Find a dataset of interest to you.
+  
+  - Turn in a brief one-page description by the end of week 3.
+  
+  - Submit a mid-term report (2 - 4 pages, no more than 4 please) by the end of week 12.
+  
+  - Present your work to your peers week 15 and 16.
+  
+  - Submit a final report (4 - 8 pages, no more than 8 please) by the end of the semester by December 5.
+  
+  - Submit code to your own private GitHub repository on the course GitHub organization by December 5.
+  
+  - (Optional) make a GitHub page for your project.
+  
+### Brief Description components
+
+  - Introduce the dataset (data type, origin, etc).  Explain why you choose the dataset.  List some questions you want to explore with the dataset.
+  
+### Mid-term report components
+
+  - Include the brief description with modifications if needed
+  
+  - Give an abstract on your plan
+    
+    - What analyses you want to perform for answering your questions
+
+  - Current progress and future plan
+  
+
+### Final report components
+
+  - Introduce the dataset.  Explain why you choose it.  Explain what questions you want to ask and explore using the dataset.
+  
+  - Analysis.  Explain the statistical methods that you use for analyzing the dataset.  Explain what you have done to generate the results (make your analysis reproducible).
+  
+  - Results.  Illustrate your results.  Use figures and tables to imiprove readability.
+  
+  - Discussions.  This is the place to put in almost whatever you want to share.  Some difficulties you met in the analysis, what you learned from the analysis, some future directions.
+
+
+## Programming Languages
+
+## R basics
+
+## RMarkdown
+
+## Using git

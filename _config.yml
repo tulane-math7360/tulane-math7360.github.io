@@ -2,7 +2,8 @@
 title: Math 7360
 subtitle: Data Analysis
 description: |
-    This course provides an applied approach to the statistical analysis of datasets using the R software package. 
+    This course provides an applied approach to the statistical analysis of datasets using the R software package. <br>
+    Special acknowledgement to <a href="https://sse.tulane.edu/math/faculty/lacey">Dr. Michelle Lacey</a> and <a href="http://hua-zhou.github.io/">Dr. Hua Zhou</a> for sharing their course materials.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://tulane-math7360.github.io/" # the base hostname & protocol for your site
 syllabus: "https://tulane.instructure.com/courses/2220410/assignments/syllabus"

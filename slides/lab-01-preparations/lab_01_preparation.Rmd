@@ -33,7 +33,7 @@ You could check all the development history of this website through the [commit 
 
 ## R
 Install [R](https://www.r-project.org/) on your computer.
-This is the worhorse for R programs.
+This is the workhorse for R programs.
 
 
 ## RStudio

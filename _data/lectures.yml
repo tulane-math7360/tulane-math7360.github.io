@@ -1,9 +1,14 @@
 - title: "08/19/2020 Lecture - intro"
   filename: intro
   dirname: slides/01-intro
-  tldr: 
+  tldr: "Week 1 Course Intro"
   
 - title: "08/19/2020 Lecture - R"
   filename: R
   dirname: slides/02-R
-  tldr: "Week 1 lecture 1."
+  tldr: "Week 1 lecture 1"
+  
+- title: "08/21/2020 Lab 1"
+  filename: R
+  dirname: slides/lab-01-preparations
+  tldr: "Week 1 Lab 1"

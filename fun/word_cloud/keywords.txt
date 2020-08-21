@@ -1,0 +1,13 @@
+100, Data Analysis
+90, R
+74, visualization
+68, reproducible
+33, git
+18, RMarkdown
+25, ggplot2
+37, web scraping
+37, linear models
+58, GLM
+75, neural network
+65, classification
+34, Rcpp

@@ -1,0 +1,34 @@
+# Site settings
+title: Math 7360
+subtitle: Data Analysis
+description: |
+    This course provides an applied approach to the statistical analysis of datasets using the R software package. 
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://tulane-math7360.github.io/" # the base hostname & protocol for your site
+syllabus: "https://tulane.instructure.com/courses/2220410/assignments/syllabus"
+githubdir: "tulane-math7360/tulane-math7360.github.io"
+
+# Author/user information
+email: xji4@tulane.edu
+#twitter_username: stevenvmiller
+github_username:  xji3
+authorurl: "http://xiang-ji-ncsu.github.io/"
+address: |
+    Department of Mathematics
+    411 Gibson Hall
+    New Orleans, LA 70118
+
+
+# Build settings
+markdown: kramdown
+
+# Other options
+permalink: blog/:year/:month/:title
+excerpt_separator: "<!--more-->"
+
+include: ['_images', '_css']
+
+# SEO stuff
+# google_author: ""
+# google_site_verification: ""
+# bing_webmastertools_id: ""

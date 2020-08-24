@@ -26,7 +26,7 @@ csl: ../apa.csl
   
   - There will be "solutions" posted (after the following Monday lecture) for future lab sessions (when there are questions).
 
-- Using R is a course object
+- Using R is a course objective
 
   - try to use R as much as possible for lab sessions and homework assignments
   

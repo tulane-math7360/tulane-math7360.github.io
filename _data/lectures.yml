@@ -12,3 +12,8 @@
   filename: lab_01_preparation
   dirname: slides/lab-01-preparations
   tldr: "Week 1 Lab 1"
+  
+- title: "08/24/2020 Lecture - R cont."
+  filename: R_cont
+  dirname: slides/03-R_cont
+  tldr: "Week 2 lecture 2"  

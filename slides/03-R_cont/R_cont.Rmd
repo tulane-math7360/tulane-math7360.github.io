@@ -65,6 +65,8 @@ csl: ../apa.csl
   
   - Sports/eSports prediction
   
+  - Hurricane prediction!
+  
   - 1000 human genome project
   
   - Reproduce findings of a paper in your field (could be hard).

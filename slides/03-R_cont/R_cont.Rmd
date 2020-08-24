@@ -1,7 +1,7 @@
 ---
 title: "R Basics (cont.)"
 author: "Dr. Xiang Ji @ Tulane University"
-date: "Aug 19, 2020"
+date: "Aug 24, 2020"
 output:
   html_document:
     toc: true

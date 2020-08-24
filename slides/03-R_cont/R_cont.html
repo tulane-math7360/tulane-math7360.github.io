@@ -378,7 +378,7 @@ summary {
 <h1 class="title toc-ignore">R Basics (cont.)</h1>
 <h3 class="subtitle">MATH-7360 Data Analysis</h3>
 <h4 class="author">Dr. Xiang Ji @ Tulane University</h4>
-<h4 class="date">Aug 19, 2020</h4>
+<h4 class="date">Aug 24, 2020</h4>
 
 </div>
 
@@ -486,7 +486,7 @@ summary {
 <li><p>Be memory conscious when dealing with big data. E.g., human genome has about <span class="math inline">\(3 \times 10^9\)</span> bases, each of which belongs to {A, C, G, T}. How much storage if we store <span class="math inline">\(10^6\)</span> SNPs (single nucleotide polymorphisms) of <span class="math inline">\(1000\)</span> individuals as single (4GB), double (8GB), int32 (4GB), int16 (2GB), int8 (1GB), PLINK library format 2bit/SNP (250MB)?</p></li>
 <li><p>Know the limit. <em>Overflow</em> and <em>Underflow</em>. For double precision, <span class="math inline">\(\pm 10 ^{\pm 308}\)</span>. In most situations, underflow is “preferred” over overflow. Overflow often causes crashes. Underflow yields zeros (which however could lead to <span class="math inline">\(0 / 0\)</span> situations).</p>
 <ul>
-<li><p>Example 1, in logistic regression, <span class="math inline">\(p_i = \frac{\exp{x_i^T \beta}}{1 + \exp{x_i^T \beta}} = \frac{1}{1 + \exp{-x_i^T \beta}}\)</span>. The former expression can easily lead to <span class="math inline">\(\infty / \infty = NaN\)</span>, while the latter expression leads to graceful underflow.</p></li>
+<li><p>Example 1, in logistic regression, <span class="math inline">\(p_i = \frac{\exp{(x_i^T \beta})}{1 + \exp{(x_i^T \beta})} = \frac{1}{1 + \exp{(-x_i^T \beta})}\)</span>. The former expression can easily lead to <span class="math inline">\(\infty / \infty = NaN\)</span>, while the latter expression leads to graceful underflow.</p></li>
 <li><p>Example 2, calculation of the probability of large amount of iid (independent and identically distributed) random variables (r.v.). Consider operation in log-space.</p></li>
 </ul></li>
 </ul>
@@ -719,7 +719,7 @@ order(runif(5))
 ```
 
 ```
-## [1] 1 5 2 4 3
+## [1] 1 2 3 5 4
 ```
 
 ```r
@@ -727,7 +727,7 @@ sample(1:5, 5)
 ```
 
 ```
-## [1] 2 4 5 1 3
+## [1] 2 1 4 3 5
 ```
 -->
 <!-- ## RMarkdown -->

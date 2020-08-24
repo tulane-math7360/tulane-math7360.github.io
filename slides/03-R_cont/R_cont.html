@@ -387,30 +387,44 @@ summary {
 <li><a href="#announcement">Announcement</a></li>
 <li><a href="#course-project">Course Project</a>
 <ul>
-<li><a href="#dataset-sources">Dataset sources</a></li>
+<li><a href="#project-ideasdataset-resources">Project ideas/Dataset resources</a></li>
 <li><a href="#brief-description-components">Brief Description components</a></li>
 <li><a href="#mid-term-report-components">Mid-term report components</a></li>
 <li><a href="#final-report-components">Final report components</a></li>
 </ul></li>
+<li><a href="#consequences-of-computer-storage-arithmetic">Consequences of computer storage / arithmetic</a></li>
 <li><a href="#programming-languages">Programming Languages</a></li>
-<li><a href="#r-basics">R basics</a></li>
-<li><a href="#rmarkdown">RMarkdown</a></li>
-<li><a href="#using-git">Using git</a></li>
+<li><a href="#r-basics">R basics</a>
+<ul>
+<li><a href="#styles">styles</a></li>
+<li><a href="#arithmetic">Arithmetic</a></li>
+<li><a href="#objects">Objects</a></li>
+<li><a href="#locating-and-deleting-objects">Locating and deleting objects:</a></li>
+<li><a href="#vectors">Vectors</a></li>
+<li><a href="#operations-on-vectors">Operations on vectors</a></li>
+</ul></li>
 </ul>
 </div>
 
 <div id="announcement" class="section level2">
 <h2>Announcement</h2>
 <ul>
-<li><p>Introduce yourself (grade point penalty?)</p></li>
+<li><p>Introduce yourself (the charm of zoom)</p></li>
+<li><p>Wednesday class will be online too. Stay safe and dry!</p></li>
+<li><p>Course GitHub organization invitation</p></li>
 <li><p>Lab sessions</p>
 <ul>
 <li><p>There will be recordings (when needed) in the future.</p></li>
 <li><p>No need to submit the lab “work”.</p></li>
 <li><p>There will be “solutions” posted (after the following Monday lecture) for future lab sessions (when there are questions).</p></li>
 </ul></li>
-<li><p>Project submission via GitHub</p></li>
-<li><p>Homeword assignment starts week 2. 1st assignment due on week 4. Expected frequency: bi-weekly.</p></li>
+<li><p>Using R is a course object</p>
+<ul>
+<li><p>try to use R as much as possible for lab sessions and homework assignments</p></li>
+<li><p>free to use any language for course project</p></li>
+</ul></li>
+<li><p>Project and homework submission via GitHub</p></li>
+<li><p>Homework assignment starts week 2. 1st assignment due on week 4. Expected frequency: bi-weekly.</p></li>
 <li><p>Will provide optional reading material on Course Webpage. (No poll for python, it will be provided through this mechanism)</p></li>
 <li><p>Github page contains the most up-to-date materials.</p></li>
 <li><p>Regret on sending multiple locations for posting GitHub ids.</p></li>
@@ -427,12 +441,15 @@ summary {
 <li><p>Submit code to your own private GitHub repository on the course GitHub organization by December 5.</p></li>
 <li><p>(Optional) make a GitHub page for your project.</p></li>
 </ul>
-<div id="dataset-sources" class="section level3">
-<h3>Dataset sources</h3>
+<div id="project-ideasdataset-resources" class="section level3">
+<h3>Project ideas/Dataset resources</h3>
 <ul>
-<li><a href="http://jmcauley.ucsd.edu/data/amazon/" class="uri">http://jmcauley.ucsd.edu/data/amazon/</a></li>
-<li><a href="https://nijianmo.github.io/amazon/index.html" class="uri">https://nijianmo.github.io/amazon/index.html</a></li>
-<li><a href="https://cseweb.ucsd.edu/~jmcauley/datasets.html" class="uri">https://cseweb.ucsd.edu/~jmcauley/datasets.html</a></li>
+<li><p>Amazon data <a href="http://jmcauley.ucsd.edu/data/amazon/" class="uri">http://jmcauley.ucsd.edu/data/amazon/</a>, <a href="https://nijianmo.github.io/amazon/index.html" class="uri">https://nijianmo.github.io/amazon/index.html</a>, <a href="https://cseweb.ucsd.edu/~jmcauley/datasets.html" class="uri">https://cseweb.ucsd.edu/~jmcauley/datasets.html</a></p></li>
+<li><p><a href="https://www.netflixprize.com/rules.html">Netflix challenge</a></p></li>
+<li><p>Sports/eSports prediction</p></li>
+<li><p>1000 human genome project</p></li>
+<li><p>Reproduce findings of a paper in your field (could be hard).</p></li>
+<li><p>Google “data science projects” to get more ideas</p></li>
 </ul>
 </div>
 <div id="brief-description-components" class="section level3">
@@ -462,17 +479,259 @@ summary {
 </ul>
 </div>
 </div>
+<div id="consequences-of-computer-storage-arithmetic" class="section level2">
+<h2>Consequences of computer storage / arithmetic</h2>
+<ul>
+<li><p>Be memory conscious when dealing with big data. E.g., human genome has about <span class="math inline">\(3 \times 10^9\)</span> bases, each of which belongs to {A, C, G, T}. How much storage if we store <span class="math inline">\(10^6\)</span> SNPs (single nucleotide polymorphisms) of <span class="math inline">\(1000\)</span> individuals as single (4GB), double (8GB), int32 (4GB), int16 (2GB), int8 (1GB), PLINK library format 2big/SNP (250MB)?</p></li>
+<li><p>Know the limit. <em>Overflow</em> and <em>Underflow</em>. For double precision, <span class="math inline">\(\pm 10 ^{\pm 308}\)</span>. In most situations, underflow is “preferred” over overflow. Overflow often causes crashes. Underflow yields zeros (which however could lead to <span class="math inline">\(0 / 0\)</span> situations).</p>
+<ul>
+<li><p>Example 1, in logistic regression, <span class="math inline">\(p_i = \frac{\exp{x_i^T \beta}}{1 + \exp{x_i^T \beta}} = \frac{1}{1 + \exp{x_i^T \beta}}\)</span>. The former expression can easily lead to <span class="math inline">\(\infty / \infty = NaN\)</span>, while the latter expression leads to graceful underflow.</p></li>
+<li><p>Example 2, calculation of the probability of large number of iid (independent and identically distributed) random variables (r.v.). Consider operation in log-space.</p></li>
+</ul></li>
+</ul>
+</div>
 <div id="programming-languages" class="section level2">
 <h2>Programming Languages</h2>
+<p align="center">
+<img src="data:image/gif;base64,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" height="650" width="700">
+</p>
+<p>Compiled versus interpreted languages.</p>
+<ul>
+<li><p>Compiled languages: C/C++, Fortran, … Derictly compiled to machine code that is executed by CPU. Advantage: fast, take less memory. Disadvantage: relatively longer development time, hard to debug.</p></li>
+<li><p>Interpreted language: R, Matlab, SAS IML, … Interpreted by interpreter. Advantage: fast for prototyping. Disadvantage: excruciatingly slow for loops.</p></li>
+<li><p>Mixed (compiled and then interpreted by virtual machine): Python, JAVA. Advantage: extremely convenient for data preprocessing and manipulation; relatively short development time. Disadvantage: not as fast as compiled language.</p></li>
+<li><p>Scripting: Unix/Linux scripts, Perl, Python. Extremely useful for data preprocessing and manipulation.</p></li>
+<li><p>Database language: SQL, Hadoop. Data analysis never happens if we do not know how to retrieve data from databases.</p></li>
+</ul>
+<p>More about computer languages</p>
+<ul>
+<li><p>To improve efficiency of interpreted languages such as R code, avoid loops as much as possible. Aka, vectorize code.</p></li>
+<li><p>For some tasks where looping is necessary (cannot vectorize code), consider conding in C/C++ or Fortran. It is convenient to incorporate compiled code into R.</p></li>
+<li><p>To be versatile in dealing with big data, master at least on language in each category.</p></li>
+<li><p>Don’t reinvent wheels. Make good use of libraries BLAS, LAPACK, Boost, Scipy, Numpy, …</p></li>
+<li><p>Distinction between compiled language and interpreted language is getting blurred. The compiler package in R for JIT (just-in-time) compilation technology.</p></li>
+</ul>
 </div>
 <div id="r-basics" class="section level2">
 <h2>R basics</h2>
+<div id="styles" class="section level3">
+<h3>styles</h3>
+<p>(reading assignment)</p>
+<p>Checkout <a href="https://google.github.io/styleguide/Rguide.html">Google’s R style Guide</a> and <a href="http://adv-r.had.co.nz/Style.html#undefined">Style guide in Advanced R</a>.</p>
 </div>
-<div id="rmarkdown" class="section level2">
-<h2>RMarkdown</h2>
+<div id="arithmetic" class="section level3">
+<h3>Arithmetic</h3>
+<p>R can do any basic mathematical computations.</p>
+<table>
+<thead>
+<tr class="header">
+<th>symbol</th>
+<th>use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>+</td>
+<td>addition</td>
+</tr>
+<tr class="even">
+<td>-</td>
+<td>subtraction</td>
+</tr>
+<tr class="odd">
+<td>*</td>
+<td>multiplication</td>
+</tr>
+<tr class="even">
+<td>/</td>
+<td>division</td>
+</tr>
+<tr class="odd">
+<td>^</td>
+<td>power</td>
+</tr>
+<tr class="even">
+<td>%%</td>
+<td>modulus</td>
+</tr>
+<tr class="odd">
+<td>exp()</td>
+<td>exponent</td>
+</tr>
+<tr class="even">
+<td>log()</td>
+<td>natural logarithm</td>
+</tr>
+<tr class="odd">
+<td>sqrt()</td>
+<td>square root</td>
+</tr>
+<tr class="even">
+<td>round()</td>
+<td>rounding</td>
+</tr>
+<tr class="odd">
+<td>floor()</td>
+<td>flooring</td>
+</tr>
+<tr class="even">
+<td>ceiling()</td>
+<td>ceiling</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="using-git" class="section level2">
-<h2>Using git</h2>
+<div id="objects" class="section level3">
+<h3>Objects</h3>
+<p>You can create an R object to save results of a computation or other command.</p>
+<p>Example 1</p>
+<pre class="r"><code>x &lt;- 3 + 5
+x</code></pre>
+<pre><code>## [1] 8</code></pre>
+<ul>
+<li>In most languages, the direction of passing through the value into the object goes from right to left (e.g. with “=”). However, R allows both directions (which is actually bad!). In this course, we encourage the use of “&lt;-” or “=”. There are people liking “=” over “&lt;-” for the reason that “&lt;-” sometimes break into two operators “&lt; -”.</li>
+</ul>
+<p>Example 2</p>
+<pre class="r"><code>x &lt; - 3 + 5</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>x</code></pre>
+<pre><code>## [1] 8</code></pre>
+<ul>
+<li>For naming conventions, stick with either “.” or &quot;_&quot; (refer to the style guide).</li>
+</ul>
+<p>Example 3</p>
+<pre class="r"><code>sum.result &lt;- x + 5
+sum.result</code></pre>
+<pre><code>## [1] 13</code></pre>
+<ul>
+<li><em>important</em>: many names are already taken for built-in R functions. Make sure that you don’t override them.</li>
+</ul>
+<p>Example 4</p>
+<pre class="r"><code>sum(2:5)</code></pre>
+<pre><code>## [1] 14</code></pre>
+<pre class="r"><code>sum</code></pre>
+<pre><code>## function (..., na.rm = FALSE)  .Primitive(&quot;sum&quot;)</code></pre>
+<pre class="r"><code>sum &lt;- 3 + 4 + 5
+sum(5:8)</code></pre>
+<pre><code>## [1] 26</code></pre>
+<pre class="r"><code>sum</code></pre>
+<pre><code>## [1] 12</code></pre>
+<ul>
+<li>R is case-sensitive. “Math.7360” is different from “math.7360”.</li>
+</ul>
+</div>
+<div id="locating-and-deleting-objects" class="section level3">
+<h3>Locating and deleting objects:</h3>
+<p>The commands “objects()” and “ls()” will provide a list of every object that you’ve created in a session.</p>
+<pre class="r"><code>objects()</code></pre>
+<pre><code>## [1] &quot;sum&quot;        &quot;sum.result&quot; &quot;x&quot;</code></pre>
+<pre class="r"><code>ls()</code></pre>
+<pre><code>## [1] &quot;sum&quot;        &quot;sum.result&quot; &quot;x&quot;</code></pre>
+<p>The “rm()” and “remove()” commands let you delete objects (tip: always clearn-up your workspace as the first command)</p>
+<pre class="r"><code>rm(list=ls())  # clean up workspace</code></pre>
+</div>
+<div id="vectors" class="section level3">
+<h3>Vectors</h3>
+<p>Many commands in R generate a vector of output, rather than a single number.</p>
+<p>The “c()” command: creates a vector containing a list of specific elements.</p>
+<p>Example 1</p>
+<pre class="r"><code>c(7, 3, 6, 0)</code></pre>
+<pre><code>## [1] 7 3 6 0</code></pre>
+<pre class="r"><code>c(73:60)</code></pre>
+<pre><code>##  [1] 73 72 71 70 69 68 67 66 65 64 63 62 61 60</code></pre>
+<pre class="r"><code>c(7:3, 6:0)</code></pre>
+<pre><code>##  [1] 7 6 5 4 3 6 5 4 3 2 1 0</code></pre>
+<pre class="r"><code>c(rep(7:3, 6), 0)</code></pre>
+<pre><code>##  [1] 7 6 5 4 3 7 6 5 4 3 7 6 5 4 3 7 6 5 4 3 7 6 5 4 3 7 6 5 4 3 0</code></pre>
+<p>Example 2 The command “seq()” creates a sequence of numbers.</p>
+<pre class="r"><code>seq(7)</code></pre>
+<pre><code>## [1] 1 2 3 4 5 6 7</code></pre>
+<pre class="r"><code>seq(3, 70, by = 6)</code></pre>
+<pre><code>##  [1]  3  9 15 21 27 33 39 45 51 57 63 69</code></pre>
+<pre class="r"><code>seq(3, 70, length = 6)</code></pre>
+<pre><code>## [1]  3.0 16.4 29.8 43.2 56.6 70.0</code></pre>
+</div>
+<div id="operations-on-vectors" class="section level3">
+<h3>Operations on vectors</h3>
+<p>Use brackets to select element of a vector.</p>
+<pre class="r"><code>x &lt;- 73:60
+x[2]</code></pre>
+<pre><code>## [1] 72</code></pre>
+<pre class="r"><code>x[2:5]</code></pre>
+<pre><code>## [1] 72 71 70 69</code></pre>
+<pre class="r"><code>x[-(2:5)]</code></pre>
+<pre><code>##  [1] 73 68 67 66 65 64 63 62 61 60</code></pre>
+<p>Can access by “name” (safe with column/row order changes)</p>
+<pre class="r"><code>y &lt;- 1:3
+names(y) &lt;- c(&quot;do&quot;, &quot;re&quot;, &quot;mi&quot;)
+y[3]</code></pre>
+<pre><code>## mi 
+##  3</code></pre>
+<pre class="r"><code>y[&quot;mi&quot;]</code></pre>
+<pre><code>## mi 
+##  3</code></pre>
+<p>R commands on vectors</p>
+<table>
+<colgroup>
+<col width="56%" />
+<col width="43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>command</th>
+<th>usage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>sum()</td>
+<td>sum over elements in vector</td>
+</tr>
+<tr class="even">
+<td>mean()</td>
+<td>compute average value</td>
+</tr>
+<tr class="odd">
+<td>sort()</td>
+<td>sort elements in a vector</td>
+</tr>
+<tr class="even">
+<td>min(), max()</td>
+<td>min and max values of a vector</td>
+</tr>
+<tr class="odd">
+<td>length()</td>
+<td>length of a vector</td>
+</tr>
+<tr class="even">
+<td>summary()</td>
+<td>returns the min, Q1, median, mean, Q3, and max values of a vector</td>
+</tr>
+</tbody>
+</table>
+<!-- | sample(x, size, replace = FALSE, prob = NULL) | takes a random sample from a vector with or without replacement| -->
+<p><strong>Exercise</strong> Write a command to generate a random permutation of the numbers between 1 and 5 and save it to an object.</p>
+<!--
+
+```r
+order(runif(5))
+```
+
+```
+## [1] 5 2 4 1 3
+```
+
+```r
+sample(1:5, 5)
+```
+
+```
+## [1] 3 1 4 2 5
+```
+-->
+<!-- ## RMarkdown -->
+<!-- ## Using git -->
+</div>
 </div>
 
 

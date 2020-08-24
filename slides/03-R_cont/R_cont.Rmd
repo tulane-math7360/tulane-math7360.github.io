@@ -46,15 +46,15 @@ csl: ../apa.csl
 
   - Find a dataset of interest to you.
   
-  - Turn in a brief one-page description by the end of week 3.
+  - Turn in a brief one-page description by the end of week 3. (3/30)
   
-  - Submit a mid-term report (2 - 4 pages, no more than 4 please) by the end of week 12.
+  - Submit a mid-term report (2 - 4 pages, no more than 4 please) by the end of week 12.  (7/30)
   
-  - Present your work to your peers week 15 and 16.
+  - Present your work to your peers week 15 and 16.  (10/30)
   
   - Submit a final report (4 - 8 pages, no more than 8 please) by the end of the semester by December 5.
   
-  - Submit code to your own private GitHub repository on the course GitHub organization by December 5.
+  - Submit code to your own private GitHub repository on the course GitHub organization by December 5.  (Report + Code, 10/30)
   
   - (Optional) make a GitHub page for your project.
   
@@ -101,7 +101,7 @@ csl: ../apa.csl
 ## Consequences of computer storage / arithmetic
 
   - Be memory conscious when dealing with big data.  E.g., human genome has about $3 \times 10^9$ bases, each of which belongs to {A, C, G, T}.
-  How much storage if we store $10^6$ SNPs (single nucleotide polymorphisms) of $1000$ individuals as single (4GB), double (8GB), int32 (4GB), int16 (2GB), int8 (1GB), PLINK library format 2big/SNP (250MB)?
+  How much storage if we store $10^6$ SNPs (single nucleotide polymorphisms) of $1000$ individuals as single (4GB), double (8GB), int32 (4GB), int16 (2GB), int8 (1GB), PLINK library format 2bit/SNP (250MB)?
   
   - Know the limit.  _Overflow_ and _Underflow_.  For double precision, $\pm 10 ^{\pm 308}$.  In most situations, underflow is "preferred" over overflow.  Overflow often causes crashes.  Underflow yields zeros (which however could lead to $0 / 0$ situations).
   

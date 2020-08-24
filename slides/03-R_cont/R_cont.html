@@ -487,7 +487,7 @@ summary {
 <li><p>Know the limit. <em>Overflow</em> and <em>Underflow</em>. For double precision, <span class="math inline">\(\pm 10 ^{\pm 308}\)</span>. In most situations, underflow is “preferred” over overflow. Overflow often causes crashes. Underflow yields zeros (which however could lead to <span class="math inline">\(0 / 0\)</span> situations).</p>
 <ul>
 <li><p>Example 1, in logistic regression, <span class="math inline">\(p_i = \frac{\exp{x_i^T \beta}}{1 + \exp{x_i^T \beta}} = \frac{1}{1 + \exp{x_i^T \beta}}\)</span>. The former expression can easily lead to <span class="math inline">\(\infty / \infty = NaN\)</span>, while the latter expression leads to graceful underflow.</p></li>
-<li><p>Example 2, calculation of the probability of large number of iid (independent and identically distributed) random variables (r.v.). Consider operation in log-space.</p></li>
+<li><p>Example 2, calculation of the probability of large amount of iid (independent and identically distributed) random variables (r.v.). Consider operation in log-space.</p></li>
 </ul></li>
 </ul>
 </div>
@@ -498,7 +498,7 @@ summary {
 </p>
 <p>Compiled versus interpreted languages.</p>
 <ul>
-<li><p>Compiled languages: C/C++, Fortran, … Derictly compiled to machine code that is executed by CPU. Advantage: fast, take less memory. Disadvantage: relatively longer development time, hard to debug.</p></li>
+<li><p>Compiled languages: C/C++, Fortran, … directly compiled to machine code that is executed by CPU. Advantage: fast, take less memory. Disadvantage: relatively longer development time, hard to debug.</p></li>
 <li><p>Interpreted language: R, Matlab, SAS IML, … Interpreted by interpreter. Advantage: fast for prototyping. Disadvantage: excruciatingly slow for loops.</p></li>
 <li><p>Mixed (compiled and then interpreted by virtual machine): Python, JAVA. Advantage: extremely convenient for data preprocessing and manipulation; relatively short development time. Disadvantage: not as fast as compiled language.</p></li>
 <li><p>Scripting: Unix/Linux scripts, Perl, Python. Extremely useful for data preprocessing and manipulation.</p></li>
@@ -719,7 +719,7 @@ order(runif(5))
 ```
 
 ```
-## [1] 2 1 4 5 3
+## [1] 2 4 3 5 1
 ```
 
 ```r
@@ -727,7 +727,7 @@ sample(1:5, 5)
 ```
 
 ```
-## [1] 1 4 3 2 5
+## [1] 5 4 1 3 2
 ```
 -->
 <!-- ## RMarkdown -->

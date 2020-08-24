@@ -108,7 +108,7 @@ csl: ../apa.csl
     - Example 1, in logistic regression, $p_i = \frac{\exp{x_i^T \beta}}{1 + \exp{x_i^T \beta}} = \frac{1}{1 + \exp{x_i^T \beta}}$.
   The former expression can easily lead to $\infty / \infty = NaN$, while the latter expression leads to graceful underflow.
   
-    - Example 2, calculation of the probability of large number of iid (independent and identically distributed) random variables (r.v.).
+    - Example 2, calculation of the probability of large amount of iid (independent and identically distributed) random variables (r.v.).
     Consider operation in log-space.
   
 
@@ -121,7 +121,7 @@ csl: ../apa.csl
 
 Compiled versus interpreted languages.
 
-- Compiled languages: C/C++, Fortran, ... Derictly compiled to machine code that is executed by CPU.  Advantage: fast, take less memory.  Disadvantage: relatively longer development time, hard to debug.
+- Compiled languages: C/C++, Fortran, ... directly compiled to machine code that is executed by CPU.  Advantage: fast, take less memory.  Disadvantage: relatively longer development time, hard to debug.
 
 - Interpreted language: R, Matlab, SAS IML, ... Interpreted by interpreter.  Advantage: fast for prototyping.  Disadvantage: excruciatingly slow for loops.
 

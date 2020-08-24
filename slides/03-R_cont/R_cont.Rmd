@@ -149,7 +149,8 @@ More about computer languages
 ### styles
 (reading assignment)
 
-Checkout [Google's R style Guide](https://google.github.io/styleguide/Rguide.html) and [Style guide in Advanced R](http://adv-r.had.co.nz/Style.html#undefined).
+Checkout [Google's R style Guide](https://google.github.io/styleguide/Rguide.html), [Style guide in Advanced R](http://adv-r.had.co.nz/Style.html#undefined)
+and the [tidyverse style guide](https://style.tidyverse.org/).
 
 ### Arithmetic
 

@@ -105,7 +105,7 @@ csl: ../apa.csl
   
   - Know the limit.  _Overflow_ and _Underflow_.  For double precision, $\pm 10 ^{\pm 308}$.  In most situations, underflow is "preferred" over overflow.  Overflow often causes crashes.  Underflow yields zeros (which however could lead to $0 / 0$ situations).
   
-    - Example 1, in logistic regression, $p_i = \frac{\exp{x_i^T \beta}}{1 + \exp{x_i^T \beta}} = \frac{1}{1 + \exp{x_i^T \beta}}$.
+    - Example 1, in logistic regression, $p_i = \frac{\exp{x_i^T \beta}}{1 + \exp{x_i^T \beta}} = \frac{1}{1 + \exp{-x_i^T \beta}}$.
   The former expression can easily lead to $\infty / \infty = NaN$, while the latter expression leads to graceful underflow.
   
     - Example 2, calculation of the probability of large amount of iid (independent and identically distributed) random variables (r.v.).

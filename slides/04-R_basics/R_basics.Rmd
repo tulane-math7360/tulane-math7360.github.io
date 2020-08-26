@@ -186,6 +186,20 @@ sum
 
  - R is case-sensitive. "Math.7360" is different from "math.7360".
  
+ - use "assign" and "get" to create/retrieve object by string.
+ 
+Example 5
+```{r}
+assign("test.vec.duplicate", test.vec)
+test.vec
+test.vec.duplicate
+
+test.vec[3] <- 71
+
+get("test.vec")
+```
+
+ 
 ### Locating and deleting objects:
 The commands "objects()" and "ls()" will provide a list of every object that you've created in a session.
 

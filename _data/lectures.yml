@@ -22,4 +22,9 @@
   filename: R_basics
   dirname: slides/04-R_basics
   tldr: "Week 2 lecture 3"
-    
+  
+- title: "08/28/2020 Lab 2"
+  filename: lab_02_R_basics
+  dirname: slides/lab-02-Basics
+  tldr: "Week 2 lab 2"  
+

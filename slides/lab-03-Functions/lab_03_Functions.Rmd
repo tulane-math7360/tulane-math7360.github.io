@@ -1,0 +1,32 @@
+---
+title: "Lab 03 Functions"
+author: "Dr. Xiang Ji @ Tulane University"
+date: "Sept , 2020"
+output:
+  html_document:
+    toc: true
+    toc_depth: 4  
+subtitle: MATH-7360 Data Analysis
+csl: ../apa.csl
+---
+
+## Vectorized calculation
+Our final easy task for today: adding two vectors!
+
+```{r}
+set.seed(7360)        # what's this?  Don't worry, we will cover this later in class.
+vector.1 <- rnorm(3)  # what does rnorm() do?
+vector.2 <- rnorm(6)
+vector.addition <- vector.1 + vector.2
+```
+
+> **Question 4** Explain what happens.
+
+## Functions
+
+override? masked?
+
+## remove objects
+
+remove a function?
+overide function c

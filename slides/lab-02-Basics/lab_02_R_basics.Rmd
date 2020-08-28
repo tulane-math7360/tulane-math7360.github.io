@@ -122,7 +122,7 @@ v.power.sum.53 <- sum()
 Now let's try putting the first element back
 
 ```{r}
-v.power.sum.second <- 2^969 + sum()
+v.power.sum.second <- 2^v[1] + sum()
 ```
 
 > **Question 3** Explain what you found.

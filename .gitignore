@@ -1,8 +1,8 @@
 # tex related
-.tex
-.aux
-.log
-.synctex.gz
+*.tex
+*.aux
+*.log
+*.synctex.gz
 
 # History files
 .Rhistory

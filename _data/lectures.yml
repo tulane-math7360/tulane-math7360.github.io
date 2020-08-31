@@ -31,4 +31,9 @@
 - title: "08/31/2020 Lecture - Data structures"
   filename: Data_Structure
   dirname: slides/05-Data_structure
-  tldr: "Week 3 lecture 4"  
+  tldr: "Week 3 lecture 4"
+  
+- title: "08/31/2020 Lab 2 solutions"
+  filename: lab_02_Solutions
+  dirname: slides/lab-02-Basics
+  tldr: "Week 3 solution"

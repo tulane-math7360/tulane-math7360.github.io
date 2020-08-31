@@ -18,7 +18,7 @@ rm(list = ls()) # clean-up workspace
  
  - Lab session
  
- - HW1 posted, due Sep 11
+ - [HW1](https://github.com/tulane-math7360/tulane-math7360.github.io/raw/master/HW/HW1/HW1_Fall_2020.pdf) posted, due Sep 11
  
  - 1-page report of course project due this week
  

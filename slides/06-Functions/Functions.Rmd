@@ -1,0 +1,105 @@
+---
+title: "Functions"
+author: "Dr. Xiang Ji @ Tulane University"
+date: "Aug 31, 2020"
+output:
+  html_document:
+    toc: true
+    toc_depth: 4  
+subtitle: MATH-7360 Data Analysis
+csl: ../apa.csl
+---
+
+```{r}
+rm(list = ls()) # clean-up workspace
+```
+
+## Announcement
+
+
+## Functions
+
+ - Functions are a fundamental building block of R
+ 
+ - Functions are objects in their own right
+ 
+ - [Functional programming](http://adv-r.had.co.nz/Functional-programming.html#functional-programming)
+
+### Function components
+
+ - All R functions have three parts:
+
+    - the `body()`, the code inside the function
+ 
+    - the `formals()`, the list of arguments which controls how you can call the function
+    
+    - the `environment()`, the "map" of the location of the function's variables
+    
+```{r}
+f <- function(x) x^2
+f
+
+formals(f)
+body(f)
+environment(f)
+```
+
+## Control flow
+
+These are the basic control-flow constructs of the R language. They function in much the same way as control statements in any Algol-like (Algol short for "Algorithmic Language") language. They are all reserved words.
+
+| keyword | usage |
+| ------- | ----- |
+| if | **if**(_cond_) _expr_ |
+| if-else | **if**(_cond_) _cons.expr_ **else** _alt.expr_ |
+| for  | **for**(_var_ **in** _seq_) _expr_ |
+| while | **while**(_cond_) _expr_ |
+| break | breaks out of a _for_ loop |
+| next | halts the processing of the current iteration and advances the looping index|
+
+## Define a function
+
+```{r}
+DoNothing <- function() {
+  return(invisible(NULL))
+}
+DoNothing()
+```
+
+In general, try to avoid using loops (vectorize your code) in R.
+If you have to loop, try using **for** loops first.
+Sometimes, **while** loops can be dangerous (however, a smart _compiler_ should detect this).
+
+```{r}
+DoBadThing <- function() {
+  result <- NULL
+  while(TRUE) {
+    result <- c(result, rnorm(100))
+  }
+  return(result)
+}
+# DoBadThing()
+```
+
+<!-- ## Profiling -->
+
+<!-- ## vectorized computing -->
+<!-- dimension mismatch? -->
+
+<!-- ## Automatic coercion rules -->
+<!-- ```{r} -->
+<!-- SumAll <- function(x, y) { -->
+<!--   return(x + y) -->
+<!-- } -->
+<!-- SumAll(x, y) -->
+<!-- x -->
+<!-- y -->
+<!-- ``` -->
+
+<!-- ## JIT -->
+
+<!-- ## RMarkdown -->
+
+<!-- ## Using git -->
+
+

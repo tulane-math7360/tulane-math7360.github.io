@@ -389,20 +389,39 @@ summary {
 <ul>
 <li><a href="#function-components">Function components</a></li>
 </ul></li>
-<li><a href="#control-flow">Control flow</a></li>
 <li><a href="#define-a-function">Define a function</a></li>
+<li><a href="#invoke-a-function">Invoke a function</a></li>
+<li><a href="#lexical-scoping">Lexical scoping</a>
+<ul>
+<li><a href="#name-masking">Name masking</a></li>
+<li><a href="#functions-versus-variables">functions versus variables</a></li>
+<li><a href="#a-fresh-start">A fresh start</a></li>
+<li><a href="#dynamic-lookup">Dynamic lookup</a></li>
+<li><a href="#default-arguments">Default arguments</a></li>
+<li><a href="#dot-dot-dot"><code>...</code> (dot-dot-dot)</a></li>
+</ul></li>
+<li><a href="#control-flow">Control flow</a></li>
+<li><a href="#exiting-a-function">Exiting a function</a>
+<ul>
+<li><a href="#implicit-versus-explicit-returns">Implicit versus explicit returns</a></li>
+<li><a href="#errors">Errors</a></li>
+<li><a href="#exit-handlers">Exit handlers</a></li>
+</ul></li>
 </ul>
 </div>
 
 <pre class="r"><code>rm(list = ls()) # clean-up workspace</code></pre>
 <div id="announcement" class="section level2">
 <h2>Announcement</h2>
+<ul>
+<li>Report due by the end of this week</li>
+</ul>
 </div>
 <div id="functions" class="section level2">
 <h2>Functions</h2>
 <ul>
 <li><p>Functions are a fundamental building block of R</p></li>
-<li><p>Functions are objects in their own right</p></li>
+<li><p>Functions are <strong>objects</strong> in their own right (so that they can have <code>attributes()</code>)</p></li>
 <li><p><a href="http://adv-r.had.co.nz/Functional-programming.html#functional-programming">Functional programming</a></p></li>
 </ul>
 <div id="function-components" class="section level3">
@@ -410,8 +429,8 @@ summary {
 <ul>
 <li><p>All R functions have three parts:</p>
 <ul>
-<li><p>the <code>body()</code>, the code inside the function</p></li>
-<li><p>the <code>formals()</code>, the list of arguments which controls how you can call the function</p></li>
+<li><p>the <code>formals()</code>, the list of <strong>arguments</strong> which controls how you can call the function</p></li>
+<li><p>the <code>body()</code>, the <strong>code</strong> inside the function</p></li>
 <li><p>the <code>environment()</code>, the “map” of the location of the function’s variables</p></li>
 </ul></li>
 </ul>
@@ -424,6 +443,181 @@ f</code></pre>
 <pre><code>## x^2</code></pre>
 <pre class="r"><code>environment(f)</code></pre>
 <pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
+</div>
+</div>
+<div id="define-a-function" class="section level2">
+<h2>Define a function</h2>
+<ul>
+<li><p>There is no special syntax for defining and naming a function</p></li>
+<li><p>simply create a function object (with <code>function</code>) and bind it to a name with <code>&lt;-</code></p></li>
+</ul>
+<pre class="r"><code>DoNothing &lt;- function() {
+  return(invisible(NULL))
+}
+DoNothing()</code></pre>
+</div>
+<div id="invoke-a-function" class="section level2">
+<h2>Invoke a function</h2>
+<ul>
+<li>You normally call a function by placing its arguments, wrapped in parentheses, after its name:</li>
+</ul>
+<pre class="r"><code>mean(1:10, na.rm = TRUE)</code></pre>
+<pre><code>## [1] 5.5</code></pre>
+<ul>
+<li>What if you have the arguments already in a data structure?</li>
+</ul>
+<pre class="r"><code>args &lt;- list(1:10, na.rm = TRUE)
+do.call(mean, args)</code></pre>
+<pre><code>## [1] 5.5</code></pre>
+<ul>
+<li>You can use <code>do.call()</code>.</li>
+</ul>
+</div>
+<div id="lexical-scoping" class="section level2">
+<h2>Lexical scoping</h2>
+<ul>
+<li><p>Now let’s discuss <strong>scoping</strong></p></li>
+<li><p>R uses <strong>lexical scoping</strong> that follows four primary rules:</p>
+<ul>
+<li><p>Name masking</p></li>
+<li><p>Functions versus variables</p></li>
+<li><p>A fresh start</p></li>
+<li><p>Dynamic lookup</p></li>
+</ul></li>
+</ul>
+<div id="name-masking" class="section level3">
+<h3>Name masking</h3>
+<ul>
+<li>Names defined inside a function <strong>mask</strong> names defined outside a function</li>
+</ul>
+<pre class="r"><code>x &lt;- 10
+y &lt;- 20
+
+g02 &lt;- function(){
+   x &lt;- 1  # a local variable to the function
+   y &lt;- 2
+   c(x, y)
+}
+g02()</code></pre>
+<pre><code>## [1] 1 2</code></pre>
+<ul>
+<li>If a name isn’t defined inside a function, R looks one level up.</li>
+</ul>
+<pre class="r"><code>x &lt;- 2
+g03 &lt;- function() {
+   y &lt;- 1
+   c(x, y)
+}
+g03()</code></pre>
+<pre><code>## [1] 2 1</code></pre>
+<pre class="r"><code>y</code></pre>
+<pre><code>## [1] 20</code></pre>
+<ul>
+<li><p>R searches inside the current function, then looks where the function is defined and so on, all the way up to the global environment.</p></li>
+<li><p>Finally, R looks in other loaded packages.</p></li>
+</ul>
+<pre class="r"><code>y &lt;- 10
+
+f &lt;- function(x) {
+   y &lt;- 2
+   y^2 + g(x)
+}
+
+g &lt;- function(x) {
+   x * y
+}</code></pre>
+<p>What is the value of <code>f(3)</code>?</p>
+</div>
+<div id="functions-versus-variables" class="section level3">
+<h3>functions versus variables</h3>
+<ul>
+<li><p>In R, functions are ordinary objects. This means the scoping rules described above also apply to functions.</p></li>
+<li><p>However, when rules get complicated when functions and non-functions share the same name.</p></li>
+<li><p>Better avoid assigning same names to objects</p></li>
+</ul>
+</div>
+<div id="a-fresh-start" class="section level3">
+<h3>A fresh start</h3>
+<ul>
+<li>Every time a function is called a <em>new</em> environment is created to host its execution.</li>
+</ul>
+<pre class="r"><code>g11 &lt;- function() {
+  if (!exists(&quot;a&quot;)) {
+    a &lt;- 1
+  } else {
+    a &lt;- a + 1
+  }
+  a
+}
+
+g11()</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>g11()</code></pre>
+<pre><code>## [1] 1</code></pre>
+<blockquote>
+<p>What happens if we do</p>
+</blockquote>
+<pre class="r"><code>a &lt;- 1:5
+g11()
+g11()</code></pre>
+</div>
+<div id="dynamic-lookup" class="section level3">
+<h3>Dynamic lookup</h3>
+<ul>
+<li><p>Lexical scoping determines where to look for values.</p></li>
+<li><p>R looks for values when the function is run, not when the function is created.</p></li>
+</ul>
+<pre class="r"><code>g12 &lt;- function() x + 1
+x &lt;- 15
+g12()</code></pre>
+<pre><code>## [1] 16</code></pre>
+<pre class="r"><code>x &lt;- 20
+g12()</code></pre>
+<pre><code>## [1] 21</code></pre>
+<ul>
+<li><p>Depending on variables defined in the global environment can be bad!</p></li>
+<li><p><code>codetools::findGlobals()</code> can be helpful</p></li>
+</ul>
+</div>
+<div id="default-arguments" class="section level3">
+<h3>Default arguments</h3>
+<ul>
+<li><p>You can define default values for arguments</p></li>
+<li><p>Default values can be in terms of other arguments, or even in terms of variables defined later in the function</p></li>
+<li><p>This is because R uses <strong>Lazy Evaluation</strong> that function arguments are only evaluated if accessed.</p></li>
+</ul>
+<pre class="r"><code>h04 &lt;- function(x = 1, y = x * 2, z = a + b) {
+  a &lt;- 10
+  b &lt;- 100
+  
+  c(x, y, z)
+}
+
+h04()</code></pre>
+<pre><code>## [1]   1   2 110</code></pre>
+</div>
+<div id="dot-dot-dot" class="section level3">
+<h3><code>...</code> (dot-dot-dot)</h3>
+<ul>
+<li><p>Functions can have a special argument <code>...</code></p></li>
+<li><p>With <code>...</code>, a function can take any number of additional arguments</p></li>
+<li><p>You can use <code>...</code> to pass those additional arguments on to another function</p></li>
+</ul>
+<p><strong>Pro</strong></p>
+<ul>
+<li>If your function takes a function as an argument, you want some way to pass additional arguments to that function.</li>
+</ul>
+<pre class="r"><code>x &lt;- list(c(1, 3, NA), c(4, NA, 6))
+str(lapply(x, mean, na.rm = TRUE))   </code></pre>
+<pre><code>## List of 2
+##  $ : num 2
+##  $ : num 5</code></pre>
+<p><strong>Con</strong></p>
+<ul>
+<li>A misspelled argument will not raise an error.</li>
+</ul>
+<pre class="r"><code>sum(1, 2, NA, na_rm = TRUE)</code></pre>
+<pre><code>## [1] NA</code></pre>
 </div>
 </div>
 <div id="control-flow" class="section level2">
@@ -468,21 +662,167 @@ f</code></pre>
 </tbody>
 </table>
 </div>
-<div id="define-a-function" class="section level2">
-<h2>Define a function</h2>
-<pre class="r"><code>DoNothing &lt;- function() {
-  return(invisible(NULL))
+<div id="exiting-a-function" class="section level2">
+<h2>Exiting a function</h2>
+<p>Most functions exit in one of two ways:</p>
+<ul>
+<li><p>return a value, indicating success</p></li>
+<li><p>throw an error, indicating failure</p></li>
+</ul>
+<div id="implicit-versus-explicit-returns" class="section level3">
+<h3>Implicit versus explicit returns</h3>
+<p>There are two ways that a function can return a value:</p>
+<ul>
+<li>Implicitly, where the last evaluated expression is the return value:</li>
+</ul>
+<pre class="r"><code>j01 &lt;- function(x) {
+  if (x &lt; 10) {
+    0
+  } else {
+    10
+  }
 }
-DoNothing()</code></pre>
-<p>In general, try to avoid using loops (vectorize your code) in R. If you have to loop, try using <strong>for</strong> loops first. Sometimes, <strong>while</strong> loops can be dangerous (however, a smart <em>compiler</em> should detect this).</p>
-<pre class="r"><code>DoBadThing &lt;- function() {
-  result &lt;- NULL
+j01(5)</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>j01(15)</code></pre>
+<pre><code>## [1] 10</code></pre>
+<ul>
+<li>Explicitly, by calling <code>return()</code></li>
+</ul>
+<pre class="r"><code>j02 &lt;- function(x) {
+  if (x &lt; 10) {
+    return(0)
+  } else {
+    return(10)
+  }
+}</code></pre>
+<ul>
+<li>You can hide the output from automatic printing by applying <code>invisible()</code> to the last value:</li>
+</ul>
+<pre class="r"><code>j04 &lt;- function() invisible(1)
+j04()</code></pre>
+</div>
+<div id="errors" class="section level3">
+<h3>Errors</h3>
+<p>If a function cannot complete its assigned task, it should throw an error with <code>stop()</code>, which immediately terminates the execution of the function.</p>
+<pre class="r"><code>j05 &lt;- function() {
+  stop(&quot;I&#39;m an error&quot;)
+  return(10)
+}
+j05()</code></pre>
+<pre><code>## Error in j05(): I&#39;m an error</code></pre>
+</div>
+<div id="exit-handlers" class="section level3">
+<h3>Exit handlers</h3>
+<ul>
+<li><p>Use <code>on.exit()</code> to set up an <strong>exit handler</strong> that is run regardless of whether the function exits normally or with an error</p></li>
+<li><p>Always set <code>add = TRUE</code> when using <code>on.exit()</code>. Otherwise, each call will overwrite the previous exit handler.</p></li>
+</ul>
+<pre class="r"><code>j06 &lt;- function(x) {
+  cat(&quot;Hello\n&quot;)
+  on.exit(cat(&quot;Goodbye!\n&quot;), add = TRUE)
+  
+  if (x) {
+    return(10)
+  } else {
+    stop(&quot;Error&quot;)
+  }
+}
+
+j06(TRUE)</code></pre>
+<pre><code>## Hello
+## Goodbye!</code></pre>
+<pre><code>## [1] 10</code></pre>
+<pre class="r"><code>j06(FALSE)</code></pre>
+<pre><code>## Hello</code></pre>
+<pre><code>## Error in j06(FALSE): Error</code></pre>
+<pre><code>## Goodbye!</code></pre>
+<ul>
+<li>Can use exit handler for clean-up</li>
+</ul>
+<pre class="r"><code>with_dir &lt;- function(dir, code) {
+  old &lt;- setwd(dir)
+  on.exit(setwd(old), add = TRUE)
+
+  code
+}
+
+getwd()</code></pre>
+<pre><code>## [1] &quot;/Users/xji3/Dropbox/My_Files/Tulane/Teaching/tulane-math7360.github.io/slides/06-Functions&quot;</code></pre>
+<pre class="r"><code>with_dir(&quot;~&quot;, getwd())</code></pre>
+<pre><code>## [1] &quot;/Users/xji3&quot;</code></pre>
+<pre class="r"><code>getwd()</code></pre>
+<pre><code>## [1] &quot;/Users/xji3/Dropbox/My_Files/Tulane/Teaching/tulane-math7360.github.io/slides/06-Functions&quot;</code></pre>
+<!--
+## Benchmark
+
+In order to identify performance issue, we need to measure runtime accurately.
+
+### `system.time`
+
+
+```r
+set.seed(280)
+x <- runif(1e6)
+
+system.time({sqrt(x)})
+```
+
+```
+##    user  system elapsed 
+##   0.007   0.003   0.009
+```
+
+```r
+system.time({x ^ 0.5})
+```
+
+```
+##    user  system elapsed 
+##   0.029   0.000   0.029
+```
+
+```r
+system.time({exp(log(x) / 2)})
+```
+
+```
+##    user  system elapsed 
+##   0.019   0.000   0.019
+```
+
+
+From [William Dunlap](http://r.789695.n4.nabble.com/Meaning-of-proc-time-td2303263.html#a2306691):
+
+> "User CPU time" gives the CPU time spent by the current 
+process (i.e., the current R session) and "system CPU time" 
+gives the CPU time spent by the kernel (the operating 
+system) on behalf of the current process.  The operating 
+system is used for things like opening files, doing 
+input or output, starting other processes, and looking at 
+the system clock:  operations that involve resources that many 
+processes must share.  Different operating systems will 
+have different things done by the operating system.
+
+
+## The apply's
+
+In general, try to avoid using loops (vectorize your code) in R.
+If you have to loop, try using **for** loops first.
+Sometimes, **while** loops can be dangerous (however, a smart _compiler_ should detect this).
+
+
+```r
+DoBadThing <- function() {
+  result <- NULL
   while(TRUE) {
-    result &lt;- c(result, rnorm(100))
+    result <- c(result, rnorm(100))
   }
   return(result)
 }
-# DoBadThing()</code></pre>
+# DoBadThing()
+```
+-->
 <!-- ## Profiling -->
 <!-- ## vectorized computing -->
 <!-- dimension mismatch? -->
@@ -498,6 +838,7 @@ DoNothing()</code></pre>
 <!-- ## JIT -->
 <!-- ## RMarkdown -->
 <!-- ## Using git -->
+</div>
 </div>
 
 

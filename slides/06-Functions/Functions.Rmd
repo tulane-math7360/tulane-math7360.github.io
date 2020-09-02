@@ -19,6 +19,10 @@ rm(list = ls()) # clean-up workspace
  - Report due by the end of this week
  
  - Lab 2 solutions
+ 
+ - No class next Monday (Labor day holiday)
+ 
+ - [Terminal(the Shell)](https://happygitwithr.com/shell.html#shell) in RStudio
 
 ## Functions
 

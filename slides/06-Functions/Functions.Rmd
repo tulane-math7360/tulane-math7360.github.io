@@ -17,6 +17,8 @@ rm(list = ls()) # clean-up workspace
 ## Announcement
 
  - Report due by the end of this week
+ 
+ - Lab 2 solutions
 
 ## Functions
 

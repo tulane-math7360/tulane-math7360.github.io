@@ -1,7 +1,7 @@
 ---
 title: "Functions"
 author: "Dr. Xiang Ji @ Tulane University"
-date: "Aug 31, 2020"
+date: "Sep 2, 2020"
 output:
   html_document:
     toc: true

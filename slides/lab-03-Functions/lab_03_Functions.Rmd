@@ -102,7 +102,11 @@ If you want to change to another location, try to play with terminal using comma
 
 ## Some exercise on R functions
 
-### [case study on numerical integration](http://adv-r.had.co.nz/Functional-programming.html#numerical-integration) (link to the solutions).
+```{r}
+rm(list = ls()) # clean up workspace first
+```
+
+### [Case study on numerical integration](http://adv-r.had.co.nz/Functional-programming.html#numerical-integration) (link to the solutions).
 
 We will implement two simplest approaches for numerical integration and apply them to integrate `sin(x)` from $0$ to $\pi$.
 
@@ -173,13 +177,13 @@ Now try the above functions with `n=10, 100, 1000`.  Explain your findings.
 ```{r, eval = FALSE}
 midpoint.composite.vectorize <- function(f, a, b, n = 10) {
   points <- seq(a, b, length = n + 1)
-  areas <- midpoint(f, points[-()], points[-])  # Tip: the first points[] should be the list of all a's and the second points[] should be the list of all b's
+  areas <- midpoint(f, points[], points[])  # Tip: the first points[] should be the list of all a's and the second points[] should be the list of all b's
   return(sum(areas))
 }
 
 trapezoid.composite.vectorize <- function(f, a, b, n = 10) {
   points <- seq(a, b, length = n + 1)
-  areas <- trapezoid(f, points[-(n + 1)], points[-1])
+  areas <- trapezoid(f, points[], points[])
   return(sum(areas))
 }
 
@@ -198,7 +202,7 @@ trapezoid.composite.vectorize(sin, 0, pi, n = 1000)
 
 Now try the above vectorized functions with `n=10, 100, 1000`.  Explain your findings.
 
-4. compare run time
+4. compare run time (The text will make sense after running the code)
 
 From [William Dunlap](http://r.789695.n4.nabble.com/Meaning-of-proc-time-td2303263.html#a2306691):
 
@@ -222,7 +226,7 @@ system.time(trapezoid.composite.vectorize(sin, 0, pi, n = 10000))
 
 ### Normal equations
 
-Now try to implement the Normal equations from scratch.
+Now let's implement the Normal equations from scratch.
 $\hat{\beta} = (X^{\top}X)^{-1}X^{\top}Y$.
 
 ```{r, eval = FALSE}
@@ -239,7 +243,7 @@ my.normal.equations <- function(X, Y) {
     stop("Dimension mismatch between X and Y!")
   }
   
-  return() # finish the calculation
+  return() # finish the calculation for beta
 }
 
 set.seed(7360)

@@ -12,6 +12,11 @@ csl: ../apa.csl
 
 ## Some exercise on R functions
 
+```{r}
+rm(list = ls()) # clean up workspace first
+```
+
+
 ### [case study on numerical integration](http://adv-r.had.co.nz/Functional-programming.html#numerical-integration)
 
 1. Finish the code that calculates `midpoint` and `trapezoid` values.

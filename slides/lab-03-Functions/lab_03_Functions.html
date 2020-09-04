@@ -387,7 +387,7 @@ summary {
 <li><a href="#some-git-exercise">Some Git exercise</a></li>
 <li><a href="#some-exercise-on-r-functions">Some exercise on R functions</a>
 <ul>
-<li><a href="#case-study-on-numerical-integration-link-to-the-solutions."><span>case study on numerical integration</span> (link to the solutions).</a></li>
+<li><a href="#case-study-on-numerical-integration-link-to-the-solutions."><span>Case study on numerical integration</span> (link to the solutions).</a></li>
 <li><a href="#normal-equations">Normal equations</a></li>
 </ul></li>
 </ul>
@@ -459,8 +459,9 @@ summary {
 </div>
 <div id="some-exercise-on-r-functions" class="section level2">
 <h2>Some exercise on R functions</h2>
+<pre class="r"><code>rm(list = ls()) # clean up workspace first</code></pre>
 <div id="case-study-on-numerical-integration-link-to-the-solutions." class="section level3">
-<h3><a href="http://adv-r.had.co.nz/Functional-programming.html#numerical-integration">case study on numerical integration</a> (link to the solutions).</h3>
+<h3><a href="http://adv-r.had.co.nz/Functional-programming.html#numerical-integration">Case study on numerical integration</a> (link to the solutions).</h3>
 <p>We will implement two simplest approaches for numerical integration and apply them to integrate <code>sin(x)</code> from <span class="math inline">\(0\)</span> to <span class="math inline">\(\pi\)</span>.</p>
 <ol style="list-style-type: decimal">
 <li>Finish the code that calculates <code>midpoint</code> and <code>trapezoid</code> values.</li>
@@ -522,13 +523,13 @@ trapezoid.composite(sin, 0, pi, n = 1000)</code></pre>
 </ol>
 <pre class="r"><code>midpoint.composite.vectorize &lt;- function(f, a, b, n = 10) {
   points &lt;- seq(a, b, length = n + 1)
-  areas &lt;- midpoint(f, points[-()], points[-])  # Tip: the first points[] should be the list of all a&#39;s and the second points[] should be the list of all b&#39;s
+  areas &lt;- midpoint(f, points[], points[])  # Tip: the first points[] should be the list of all a&#39;s and the second points[] should be the list of all b&#39;s
   return(sum(areas))
 }
 
 trapezoid.composite.vectorize &lt;- function(f, a, b, n = 10) {
   points &lt;- seq(a, b, length = n + 1)
-  areas &lt;- trapezoid(f, points[-(n + 1)], points[-1])
+  areas &lt;- trapezoid(f, points[], points[])
   return(sum(areas))
 }
 
@@ -545,7 +546,7 @@ trapezoid.composite.vectorize(sin, 0, pi, n = 100)
 trapezoid.composite.vectorize(sin, 0, pi, n = 1000)</code></pre>
 <p>Now try the above vectorized functions with <code>n=10, 100, 1000</code>. Explain your findings.</p>
 <ol start="4" style="list-style-type: decimal">
-<li>compare run time</li>
+<li>compare run time (The text will make sense after running the code)</li>
 </ol>
 <p>From <a href="http://r.789695.n4.nabble.com/Meaning-of-proc-time-td2303263.html#a2306691">William Dunlap</a>:</p>
 <blockquote>
@@ -558,7 +559,7 @@ system.time(trapezoid.composite.vectorize(sin, 0, pi, n = 10000))</code></pre>
 </div>
 <div id="normal-equations" class="section level3">
 <h3>Normal equations</h3>
-<p>Now try to implement the Normal equations from scratch. <span class="math inline">\(\hat{\beta} = (X^{\top}X)^{-1}X^{\top}Y\)</span>.</p>
+<p>Now let’s implement the Normal equations from scratch. <span class="math inline">\(\hat{\beta} = (X^{\top}X)^{-1}X^{\top}Y\)</span>.</p>
 <pre class="r"><code>my.normal.equations &lt;- function(X, Y) {
   if (!is.vector(Y)) {
     stop(&quot;Y is not a vector!&quot;)
@@ -572,7 +573,7 @@ system.time(trapezoid.composite.vectorize(sin, 0, pi, n = 10000))</code></pre>
     stop(&quot;Dimension mismatch between X and Y!&quot;)
   }
   
-  return() # finish the calculation
+  return() # finish the calculation for beta
 }
 
 set.seed(7360)

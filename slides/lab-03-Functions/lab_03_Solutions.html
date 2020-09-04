@@ -394,6 +394,7 @@ summary {
 
 <div id="some-exercise-on-r-functions" class="section level2">
 <h2>Some exercise on R functions</h2>
+<pre class="r"><code>rm(list = ls()) # clean up workspace first</code></pre>
 <div id="case-study-on-numerical-integration" class="section level3">
 <h3><a href="http://adv-r.had.co.nz/Functional-programming.html#numerical-integration">case study on numerical integration</a></h3>
 <ol style="list-style-type: decimal">
@@ -483,16 +484,16 @@ midpoint.composite.vectorize(sin, 0, pi, n = 10)</code></pre>
 </ol>
 <pre class="r"><code>system.time(midpoint.composite(sin, 0, pi, n = 10000))</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.013   0.000   0.014</code></pre>
+##   0.013   0.000   0.013</code></pre>
 <pre class="r"><code>system.time(trapezoid.composite(sin, 0, pi, n = 10000))</code></pre>
 <pre><code>##    user  system elapsed 
 ##   0.015   0.000   0.015</code></pre>
 <pre class="r"><code>system.time(midpoint.composite.vectorize(sin, 0, pi, n = 10000))</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.001   0.000   0.001</code></pre>
+##   0.001   0.001   0.001</code></pre>
 <pre class="r"><code>system.time(trapezoid.composite.vectorize(sin, 0, pi, n = 10000))</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.000   0.000   0.001</code></pre>
+##   0.001   0.000   0.001</code></pre>
 </div>
 <div id="normal-equations" class="section level3">
 <h3>Normal equations</h3>
@@ -523,7 +524,7 @@ Y &lt;- rnorm(sample.size)
 
 system.time(result.lm &lt;- lm(Y ~ X[, 2] + X[, 3]))</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.003   0.001   0.004</code></pre>
+##   0.003   0.000   0.003</code></pre>
 <pre class="r"><code>summary(result.lm)</code></pre>
 <pre><code>## 
 ## Call:
@@ -546,7 +547,7 @@ system.time(result.lm &lt;- lm(Y ~ X[, 2] + X[, 3]))</code></pre>
 ## F-statistic: 2.094 on 2 and 97 DF,  p-value: 0.1288</code></pre>
 <pre class="r"><code>system.time(result.my.normal.equations &lt;- my.normal.equations(X, Y))</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.000   0.001   0.001</code></pre>
+##   0.001   0.000   0.000</code></pre>
 <pre class="r"><code>result.my.normal.equations</code></pre>
 <pre><code>##             [,1]
 ## [1,]  0.04355651

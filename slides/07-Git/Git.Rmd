@@ -22,6 +22,8 @@ rm(list = ls()) # clean-up workspace
  
  - [HW1](https://github.com/tulane-math7360/tulane-math7360.github.io/blob/master/HW/HW1/HW1_Fall_2020.pdf) typo corrected, due Friday
  
+ - [Example HW1 RMarkdown File](https://github.com/tulane-math7360/tulane-math7360.github.io/blob/master/HW/HW1/HW1_XJ.Rmd)
+ 
  - [Dr. Hua Zhou's Lecture](https://ucla-biostat203b-2020winter.github.io/slides/04-git/git.html)
  
 

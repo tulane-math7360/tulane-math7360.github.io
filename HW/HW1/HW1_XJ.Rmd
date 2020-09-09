@@ -1,0 +1,49 @@
+---
+title: "HW1"
+author: "Dr. Xiang Ji @ Tulane"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  # ioslides_presentation: default
+  html_document:
+    toc: true
+    toc_depth: 4
+---
+
+```{r}
+rm(list = ls()) # clean-up workspace
+```
+
+## Q1.
+
+Write plain text and use [RMarkdown cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+
+```{r}
+a <- 0.7
+b <- 0.2
+c <- 0.1
+```
+
+You may use list
+
+- Now start on Q1(a)
+
+- Now start on Q2(b)
+    ```{r}
+    Q1.b.result <- (a + b) + c
+    Q1.b.result
+    ```
+    
+You may use Header levels
+
+### a
+
+### b
+```{r}
+Q1.b.result <- (a + b) + c
+Q1.b.result
+```
+
+
+## Q2.
+
+

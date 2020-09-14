@@ -1,0 +1,66 @@
+---
+title: "Reproducible Research"
+author: "Dr. Xiang Ji @ Tulane University"
+date: "Sep 14, 2020"
+output:
+  html_document:
+    toc: true
+    toc_depth: 4  
+subtitle: MATH-7360 Data Analysis
+csl: ../apa.csl
+---
+
+```{r}
+rm(list = ls()) # clean-up workspace
+```
+
+## Announcement
+
+ - HW1 keys will be posted on Next Monday
+
+ - Wednesday class uncertainty
+ 
+ - Office hour by appointment
+ 
+## Reproducible Research
+
+### Definition
+
+In computational sciences this means:
+
+> the **data** and **code** used to make a finding are available and they are
+sufficient for an independent researcher to recreate the finding.
+>
+> Christopher Gandrud
+
+### Why
+
+- Science is about accumulating knowledge and reproducibility is the foundation.
+
+- Greater research impact.  Note: "a study can be reproducible and still be wrong."
+
+- Better work habits
+
+    - avoid thinking 'no one was looking'
+    
+    - communicate with future-you
+
+
+- Better teamwork
+
+    - communicate with another person.  For example, your instructor with your HWs.
+
+
+## Tools for reproducible research
+
+- Version control: Git+GitHub.
+
+- Distribute method implementation, e.g., R/Python/Julia packages, on GitHub or bitbucket.
+
+- Dynamic document: RMarkdown for R or [Jupyter](http://jupyter.org) for Julia/Python/R.
+
+- Docker container for reproducing a computing environment.
+
+- Cloud computing tools.
+
+- We are going to practice reproducible research **now**. That is to make your homework reproducible using Git, GitHub, and RMarkdown.

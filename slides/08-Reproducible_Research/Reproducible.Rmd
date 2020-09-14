@@ -22,6 +22,12 @@ rm(list = ls()) # clean-up workspace
  
  - Office hour by appointment
  
+ - Play with Git and GitHub
+ 
+    - Read the error message
+    
+    - Google your error message (reliable solution source: [stackoverflow](https://stackoverflow.com/))
+ 
 ## Reproducible Research
 
 ### Definition

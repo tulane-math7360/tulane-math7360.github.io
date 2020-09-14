@@ -482,7 +482,7 @@ There are three main parts to data wrangling:
 <li><p>coerce a data frame to a tibble <code>as_tibble()</code></p>
 <ul>
 <li><p>Most other R packages use regular data frames.</p></li>
-<li><p><code>iris</code> is a dataframe available in base R:</p></li>
+<li><p><code>iris</code> is a data frame available in base R:</p></li>
 </ul>
 <pre class="r"><code># a regular data frame
 iris</code></pre>
@@ -663,16 +663,6 @@ iris</code></pre>
 <hr />
 <ul>
 <li><p>Create tibble from individual vectors.</p>
-<ul>
-<li><p>Note values for y are recycled</p></li>
-<li><p>Only length one vectors are recycled</p></li>
-<li><p><code>tibble()</code> does less than <code>data.frame()</code>:</p>
-<ol style="list-style-type: decimal">
-<li><p>never changes the type of the inputs (e.g. it never converts strings to factors)</p></li>
-<li><p>never changes the names of variables</p></li>
-<li><p>never creates row names</p></li>
-</ol></li>
-</ul>
 <pre class="r"><code>tibble(
   x = 1:5, 
   y = 1, 
@@ -685,7 +675,17 @@ iris</code></pre>
 ## 2     2     1     5
 ## 3     3     1    10
 ## 4     4     1    17
-## 5     5     1    26</code></pre></li>
+## 5     5     1    26</code></pre>
+<ul>
+<li><p>Note values for y are recycled</p></li>
+<li><p>Only length one vectors are recycled</p></li>
+<li><p><code>tibble()</code> does less than <code>data.frame()</code>:</p>
+<ol style="list-style-type: decimal">
+<li><p>never changes the type of the inputs (e.g. it never converts strings to factors)</p></li>
+<li><p>never changes the names of variables</p></li>
+<li><p>never creates row names</p></li>
+</ol></li>
+</ul></li>
 <li><p>Transposed tibbles:</p>
 <pre class="r"><code>tribble(
   ~x, ~y, ~z,
@@ -786,26 +786,26 @@ iris</code></pre>
 )
 df</code></pre>
 <pre><code>## # A tibble: 5 x 2
-##        x       y
-##    &lt;dbl&gt;   &lt;dbl&gt;
-## 1 0.676   0.766 
-## 2 0.567  -1.73  
-## 3 0.0949  0.0927
-## 4 0.542  -1.60  
-## 5 0.616   1.14</code></pre></li>
+##        x      y
+##    &lt;dbl&gt;  &lt;dbl&gt;
+## 1 0.382   0.410
+## 2 0.343  -0.102
+## 3 0.197   1.65 
+## 4 0.0799 -0.351
+## 5 0.241   1.73</code></pre></li>
 <li><p>Extract by name:</p>
 <pre class="r"><code>df$x</code></pre>
-<pre><code>## [1] 0.6763862 0.5670828 0.0948585 0.5424935 0.6161392</code></pre>
+<pre><code>## [1] 0.38245371 0.34339284 0.19746657 0.07986239 0.24125372</code></pre>
 <pre class="r"><code>df[[&quot;x&quot;]]</code></pre>
-<pre><code>## [1] 0.6763862 0.5670828 0.0948585 0.5424935 0.6161392</code></pre></li>
+<pre><code>## [1] 0.38245371 0.34339284 0.19746657 0.07986239 0.24125372</code></pre></li>
 <li><p>Extract by position：</p>
 <pre class="r"><code>df[[1]]</code></pre>
-<pre><code>## [1] 0.6763862 0.5670828 0.0948585 0.5424935 0.6161392</code></pre></li>
+<pre><code>## [1] 0.38245371 0.34339284 0.19746657 0.07986239 0.24125372</code></pre></li>
 <li><p>Pipe:</p>
 <pre class="r"><code>df %&gt;% .$x</code></pre>
-<pre><code>## [1] 0.6763862 0.5670828 0.0948585 0.5424935 0.6161392</code></pre>
+<pre><code>## [1] 0.38245371 0.34339284 0.19746657 0.07986239 0.24125372</code></pre>
 <pre class="r"><code>df %&gt;% .[[&quot;x&quot;]]</code></pre>
-<pre><code>## [1] 0.6763862 0.5670828 0.0948585 0.5424935 0.6161392</code></pre>
+<pre><code>## [1] 0.38245371 0.34339284 0.19746657 0.07986239 0.24125372</code></pre>
 <p><code>.</code> is a special placeholder.</p></li>
 </ul>
 </div>

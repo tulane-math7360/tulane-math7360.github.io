@@ -57,3 +57,13 @@
   filename: Git
   dirname: slides/07-Git
   tldr: "Week 4 lecture 6"
+
+- title: "09/14/2020 Lecture - Reproducible Research"
+  filename: Reproducible
+  dirname: slides/08-Reproducible_Research
+  tldr: "Week 5 lecture 7"
+  
+- title: "09/14/2020 Lecture - Import and Tidy data"
+  filename: Tidy
+  dirname: slides/09-Tidy
+  tldr: "Week 5 lecture 7"

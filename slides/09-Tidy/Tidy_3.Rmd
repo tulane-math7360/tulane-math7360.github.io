@@ -124,6 +124,7 @@ Typical issues:
 
 - `pivot_wider()` is the opposite of `pivot_longer()`.
     ```{r}
+    table2
     table2 %>%
       pivot_wider(names_from = type, values_from = count)
     ```

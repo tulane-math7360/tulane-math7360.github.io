@@ -82,3 +82,13 @@
   filename: ggplot2
   dirname: slides/10-ggplot2
   tldr: "Week 5 lecture 8"
+  
+- title: "09/18/2020 Lab 5 - Git merge conflict"
+  filename: lab_04_git
+  dirname: slides/lab-04-Git_ggplot
+  tldr: "Week 5 lab 5"
+
+- title: "09/18/2020 Lab 5 - ggplot2"
+  filename: lab_04_ggplot2
+  dirname: slides/lab-04-Git_ggplot
+  tldr: "Week 5 lab 5"

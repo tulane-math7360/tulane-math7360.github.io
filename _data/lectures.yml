@@ -72,3 +72,13 @@
   filename: Tidy_2
   dirname: slides/09-Tidy
   tldr: "Week 5 lecture 7"
+
+- title: "09/16/2020 Lecture - Tidy data"
+  filename: Tidy_3
+  dirname: slides/09-Tidy
+  tldr: "Week 5 lecture 8"
+
+- title: "09/16/2020 Lecture - ggplot2"
+  filename: ggplot2
+  dirname: slides/10-ggplot2
+  tldr: "Week 5 lecture 8"

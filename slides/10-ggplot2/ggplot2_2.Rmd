@@ -24,7 +24,7 @@ csl: ../apa.csl
         
 - HW2 will be posted soon
 
-- HW1 will be graded by Questions
+- HW1 will be graded by Questions 1 and 2
 
 - [HW1_keys](https://github.com/tulane-math7360/tulane-math7360.github.io/tree/master/HW/HW1)
 

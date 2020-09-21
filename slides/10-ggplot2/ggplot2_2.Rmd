@@ -36,7 +36,11 @@ library("tidyverse")
 
 # Graphics for communications | r4ds chapter 28
 
-## Title 
+## Label
+
+`labs()`
+
+### Title
 
 - Figure title should be descriptive:
     ```{r, message = FALSE}
@@ -46,9 +50,12 @@ library("tidyverse")
       labs(title = "Fuel efficiency generally decreases with engine size")
     ```
 
-## Subtitle and caption 
+### Subtitle and caption 
 
-- 
+- `subtitle` adds additional detail in a smaller font beneath the title.
+
+- `caption` adds text at the bottom right of the plot, often used to describe the source of the data.
+
     ```{r, message = FALSE}
     ggplot(mpg, aes(displ, hwy)) +
       geom_point(aes(color = class)) +
@@ -60,7 +67,7 @@ library("tidyverse")
       )
     ```
     
-## Axis labels 
+### Axis labels 
 
 - 
     ```{r, message = FALSE}
@@ -73,9 +80,10 @@ library("tidyverse")
     )
     ```
 
-## Math equations 
+### Math equations 
 
--
+- read about available options in `?plotmath` 
+
     ```{r}
     df <- tibble(x = runif(10), y = runif(10))
     ggplot(df, aes(x, y)) + geom_point() +
@@ -85,7 +93,6 @@ library("tidyverse")
       )
     ```
 
-- `?plotmath` 
 
 ## Annotations 
 
@@ -94,17 +101,33 @@ library("tidyverse")
     best_in_class <- mpg %>%
       group_by(class) %>%
       filter(row_number(desc(hwy)) == 1)
+    
+    # equivalent as 
+    # best_in_class <- filter(group_by(mpg, class), row_number(desc(hwy)) == 1)
     best_in_class
     ```
 
----
+- `dplyr::desc` function transforms a vector into a format that will be sorted in descending order
 
+- `dplyr::filter` function subsets a data frame, retaining all rows that satisfy your conditions
+
+---
 - Annotate points
     ```{r}
     ggplot(mpg, aes(x = displ, y = hwy)) +
       geom_point(aes(colour = class)) +
       geom_text(aes(label = model), data = best_in_class)
     ```
+
+---
+
+- `geom_label()` draws a rectangle behind the text
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(colour = class)) +
+  geom_label(aes(label = model), data = best_in_class, nudge_y = 2, alpha = 0.5)
+```
     
 ----
 
@@ -170,7 +193,57 @@ automatically adds scales
       scale_x_reverse()
     ```
 
-    
+----
+
+- ColorBrewer scales are documentd online at [http://colorbrewer2.org/](http://colorbrewer2.org/)
+
+- Available via **RColorBrewer** package
+
+<p align="center">
+<img src="./brewer-1.png" width="600">
+</p>
+
+- use `scale_colour_manual()` to use predefined mapping between values and colors
+
+```{r}
+presidential %>%
+  mutate(id = 33 + row_number()) %>%
+  ggplot(aes(start, id, colour = party)) +
+    geom_point() +
+    geom_segment(aes(xend = end, yend = id)) +
+    scale_colour_manual(values = c(Republican = "red", Democratic = "blue"))
+```
+
+----
+
+- use `scale_colour_gradient()` or `scale_fill_gradient()` for continuous colour
+
+- `viridis::scale_colour_viridis()`
+
+```{r}
+df <- tibble(
+  x = rnorm(10000),
+  y = rnorm(10000)
+)
+ggplot(df, aes(x, y)) +
+  geom_hex() +
+  coord_fixed()
+
+ggplot(df, aes(x, y)) +
+  geom_hex() +
+  viridis::scale_fill_viridis() +
+  coord_fixed()
+```
+
+----
+
+All color scales come in two variety:
+
+   - `scale_colour_x()` for `colour` aesthetics
+   
+   - `scale_fill_x()` for `fill` aesthetics
+
+
 ## Legends
 
 - Set legend position: `"left"`, `"right"`, `"top"`, `"bottom"`, `none`:
@@ -207,6 +280,16 @@ automatically adds scales
       xlim(5, 7) + ylim(10, 30)
     ```
 
+    same as
+
+    ```{r, message = FALSE, warning = FALSE}
+    mpg %>%
+      filter(displ >= 5, displ <= 7, hwy >= 10, hwy <= 30) %>%
+      ggplot(aes(displ, hwy)) +
+      geom_point(aes(color = class)) +
+      geom_smooth()
+    ```    
+
 ----
 
 -
@@ -219,15 +302,6 @@ automatically adds scales
     ```
 
 ----
-
-- 
-    ```{r, message = FALSE}
-    mpg %>%
-      filter(displ >= 5, displ <= 7, hwy >= 10, hwy <= 30) %>%
-      ggplot(aes(displ, hwy)) +
-      geom_point(aes(color = class)) +
-      geom_smooth()
-    ```
 
 ## Themes
 

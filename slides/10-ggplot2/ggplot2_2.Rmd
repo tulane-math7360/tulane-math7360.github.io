@@ -1,7 +1,7 @@
 ---
-title: "Data visualization with ggplot2"
+title: "Data visualization with ggplot2 (cont.)"
 author: "Dr. Xiang Ji @ Tulane University"
-date: "Sep 16, 2020"
+date: "Sep 20, 2020"
 output:
   html_document:
     toc: true
@@ -9,6 +9,24 @@ output:
 subtitle: MATH-7360 Data Analysis
 csl: ../apa.csl
 ---
+
+## Announcement
+
+- Mid-term evaluation (voluntary, anonymous, ~ 10 min)
+
+    - 3 / 12
+    
+    - Lab: 
+        
+        1. will try to put lab before Thursday noon
+        
+        2. Friday office hour is free for asking any questions (lab, HW, lectures, projects)
+        
+- HW2 will be posted soon
+
+- HW1 will be graded by Questions
+
+- [HW1_keys](https://github.com/tulane-math7360/tulane-math7360.github.io/tree/master/HW/HW1)
 
 ```{r}
 rm(list = ls()) # clean-up workspace

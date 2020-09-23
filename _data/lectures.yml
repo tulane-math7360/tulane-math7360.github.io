@@ -102,3 +102,13 @@
   filename: lab_04_solutions
   dirname: slides/lab-04-Git_ggplot
   tldr: "Week 6 lab 5 solution"
+
+- title: "09/23/2020 Lecture - Visualizing Longitudinal Data Using brolgar"
+  filename: longitudinal
+  dirname: slides/11-vis
+  tldr: "Week 6 lecture 10"
+
+- title: "09/23/2020 Lecture - Data transformation"
+  filename: transformation
+  dirname: slides/12-transformation
+  tldr: "Week 6 lecture 10"

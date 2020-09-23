@@ -210,8 +210,8 @@ U %*% u
 ### e
 
 ```{r}
-# Compute max_j sum_i abs(U(i,j))
-max(colSums(abs(U)))
+# Compute max_i sum_j abs(U(i,j))
+max(rowSums(abs(U)))
 ```
 
 ### f

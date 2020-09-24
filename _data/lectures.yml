@@ -112,3 +112,8 @@
   filename: transformation
   dirname: slides/12-transformation
   tldr: "Week 6 lecture 10"
+
+- title: "09/25/2020 Lab 6 - ggplot2"
+  filename: lab_06_ggplot2
+  dirname: slides/lab-06-ggplot
+  tldr: "Week 6 lab 6"

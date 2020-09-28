@@ -117,3 +117,13 @@
   filename: lab_06_ggplot2
   dirname: slides/lab-06-ggplot
   tldr: "Week 6 lab 6"
+
+- title: "09/28/2020 Lecture - Data transformation - 2"
+  filename: transformation
+  dirname: slides/12-transformation_2
+  tldr: "Week 7 lecture 11"
+
+- title: "09/28/2020 Lecture - Strings"
+  filename: stringr
+  dirname: slides/13-strings
+  tldr: "Week 7 lecture 11"

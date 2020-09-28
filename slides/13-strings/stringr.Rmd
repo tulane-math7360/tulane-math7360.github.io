@@ -593,3 +593,7 @@ same as
 # Teaser: how to validate email address using RegEx
 
 <https://r4ds.had.co.nz/strings.html#tools>
+
+## Cheat sheet
+
+[stringr cheat sheet](http://edrub.in/CheatSheets/cheatSheetStringr.pdf)

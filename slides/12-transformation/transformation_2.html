@@ -378,7 +378,7 @@ summary {
 <h1 class="title toc-ignore">Data transformation</h1>
 <h3 class="subtitle">MATH-7360 Data Analysis</h3>
 <h4 class="author">Dr. Xiang Ji @ Tulane University</h4>
-<h4 class="date">Sep 23, 2020</h4>
+<h4 class="date">Sep 28, 2020</h4>
 
 </div>
 
@@ -647,8 +647,11 @@ delay</code></pre>
 ## # … with 86 more rows</code></pre>
 <ul>
 <li><p><code>n()</code> count for each sub-group</p></li>
-<li><h2 id="sumis.nax-counts-for-all-non-missing-values"><code>sum(!is.na(x))</code> counts for all non-missing values</h2></li>
+<li><p><code>sum(!is.na(x))</code> counts for all non-missing values</p></li>
 </ul></li>
+</ul>
+<hr />
+<ul>
 <li><p>Cleaner code using pipe <code>%&gt;%</code>:</p>
 <pre class="r"><code>delays &lt;- flights %&gt;% 
   group_by(dest) %&gt;% 

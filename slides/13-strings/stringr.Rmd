@@ -1,5 +1,5 @@
 ---
-title: "Data transformation"
+title: "Strings"
 author: "Dr. Xiang Ji @ Tulane University"
 date: "Sep 30, 2020"
 output:
@@ -13,6 +13,7 @@ csl: ../apa.csl
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(fig.width=5, fig.height=3.5, fig.align='center', cache=FALSE)
+rm(list = ls()) # clean-up workspace
 ```
 
 # String | r4ds chapter 14

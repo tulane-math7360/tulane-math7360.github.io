@@ -123,7 +123,12 @@
   dirname: slides/12-transformation
   tldr: "Week 7 lecture 11"
 
-- title: "09/28/2020 Lecture - Strings"
+- title: "09/30/2020 Lecture - Strings"
   filename: stringr
   dirname: slides/13-strings
-  tldr: "Week 7 lecture 11"
+  tldr: "Week 7 lecture 12"
+
+- title: "09/30/2020 Lecture - Web Scraping"
+  filename: scraping
+  dirname: slides/14-scraping
+  tldr: "Week 7 lecture 12"

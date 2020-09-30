@@ -1,0 +1,32 @@
+---
+title: "Lab 07 stringr"
+author: "Dr. Xiang Ji @ Tulane University"
+date: "Oct 2, 2020"
+output:
+  html_document:
+    toc: true
+    toc_depth: 4  
+subtitle: MATH-7360 Data Analysis
+csl: ../apa.csl
+---
+
+```{r}
+rm(list = ls()) # clean-up workspace
+library("tidyverse")
+```
+
+In this lab, we practice reading data from a PDF file and extract information from strings.
+
+Here is [a reference](https://blog.datazar.com/extracting-pdf-text-with-r-and-creating-tidy-data-f399011549cc) that you could follow.
+
+The pdf file ["gisaid_id_table.pdf"](./gisaid_id_table.pdf) has information about COVID_19 sequences that contain certain mutations.
+
+The task is to extract all of the Accesssion IDs from the pdf file.
+
+In the end, output a text file as "EPI_ids.txt" that contains all the accession ids.
+
+Good luck!
+
+```{r}
+writeLines(readLines("EPI_ids.txt", 10))
+```

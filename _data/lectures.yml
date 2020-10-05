@@ -128,7 +128,12 @@
   dirname: slides/13-strings
   tldr: "Week 7 lecture 12"
 
-- title: "09/30/2020 Lecture - Web Scraping"
+- title: "10/02/2020 Lab 7 - string"
+  filename: lab_07_stringr
+  dirname: slides/lab-07-stringr
+  tldr: "Week 7 lab 7"
+
+- title: "10/05/2020 Lecture - Web Scraping"
   filename: scraping
   dirname: slides/14-scraping
-  tldr: "Week 7 lecture 12"
+  tldr: "Week 8 lecture 13"

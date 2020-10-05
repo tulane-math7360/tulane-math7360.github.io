@@ -137,3 +137,8 @@
   filename: scraping
   dirname: slides/14-scraping
   tldr: "Week 8 lecture 13"
+
+- title: "10/05/2020 Lab 7 solutions"
+  filename: lab_07_stringr_keys
+  dirname: slides/lab-07-stringr
+  tldr: "Week 7 lab 7 solution"

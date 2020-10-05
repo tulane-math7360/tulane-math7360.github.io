@@ -1,7 +1,7 @@
 ---
 title: "Web Scraping"
 author: "Dr. Xiang Ji @ Tulane University"
-date: "Sep 30, 2020"
+date: "Oct 5, 2020"
 output:
   html_document:
     toc: true
@@ -14,6 +14,18 @@ csl: ../apa.csl
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(fig.align = 'center', cache = FALSE)
 ```
+
+## Announcement
+
+- HW2
+
+  - subjective nature of visualization
+  
+  - longitudinal
+  
+  - tidy data
+
+
 ```{r}
 sessionInfo()
 ```
@@ -21,6 +33,8 @@ sessionInfo()
 ## Acknowledgement
 
 Dr. Hua Zhou's [slides](https://ucla-biostat203b-2020winter.github.io/slides/10-scraping/scraping.html)
+
+Josh McCrain's [RSelenium tutorial](http://joshuamccrain.com/tutorials/web_scraping_R_selenium.html)
 
 
 Load tidyverse and other packages for this lecture:
@@ -352,3 +366,119 @@ There is a wealth of data on internet. How to scrape them and analyze them?
       labs(y = "Gross earning in millions")
     ```
 
+
+## RSelenium Example: FCC's television broadcast signal strength
+
+Many websites dynamically pull data from databases using JavasScript and JQuery 
+that make them difficult to scrape.
+
+The FCC's [dtvmaps webpage](https://www.fcc.gov/media/engineering/dtvmaps) has a simple form 
+in which you enter a zip code and it gives you the available local TV stations in that zip code and their signal strength.
+
+
+<p align="center">
+  <img src="./TV_signal.png" height="700">
+</p>
+
+You’ll also notice the URL stays fixed with different zip codes.
+
+### Why RSelenium
+
+- _RSelenium_ loads the page that we want to scrape and download the HTML from that page.
+
+    - particularly useful when scraping something behind a login
+    
+    - simulate human behavior on a website (e.g., mouse clicking)
+
+- _rvest_ provides typical scraping tools
+
+```{r}
+rm(list = ls()) # clean-up workspace
+library("RSelenium")
+library("tidyverse")
+library("rvest")
+```
+
+Open up a browser
+
+```{r}
+rD <- rsDriver(browser="firefox", port=7360L, verbose=F)
+remDr <- rD[["client"]]
+```
+
+Open a webpage
+
+```{r}
+remDr$navigate("https://www.fcc.gov/media/engineering/dtvmaps")
+```
+
+<p align="center">
+  <img src="./inspect_element.png" height="300">
+</p>
+
+We want to send a string of text (zip code) into the form.
+
+```{r}
+zip <- "70118"
+# remDr$findElement(using = "id", value = "startpoint")$clearElement()
+remDr$findElement(using = "id", value = "startpoint")$sendKeysToElement(list(zip))
+# other possible ("xpath", "css selector", "id", "name", "tag name", "class name", "link text", "partial link text")
+```
+
+Click on the button `Go!`
+
+```{r}
+remDr$findElements("id", "btnSub")[[1]]$clickElement()
+```
+
+Extract data from HTML
+
+- save HTML to an object
+
+- use rvest for the rest
+
+```{r}
+Sys.sleep(5) # give the page time to fully load, in seconds
+html <- remDr$getPageSource()[[1]]
+
+signals <- read_html(html) %>% 
+  html_nodes("table.tbl_mapReception") %>% # extract table nodes with class = "tbl_mapReception"
+  .[3] %>% # keep the third of these tables
+  .[[1]] %>% # keep the first element of this list
+  html_table(fill=T) # have rvest turn it into a dataframe
+signals
+```
+
+More formatting on signals
+
+```{r}
+names(signals) <- c("rm", "callsign", "network", "ch_num", "band", "rm2") # rename columns
+
+signals <- signals %>%
+  slice(2:n()) %>% # drop unnecessary first row
+  filter(callsign != "") %>% # drop blank rows
+  select(callsign:band) # drop unnecessary columns
+signals
+```
+
+Capture all text by clicking on each Callsign
+
+```{r}
+read_html(html) %>% 
+  html_nodes(".callsign") %>% 
+  html_attr("onclick")
+```
+
+Extract signal by string operations
+
+```{r}
+strength <- read_html(html) %>% 
+  html_nodes(".callsign") %>% 
+  html_attr("onclick") %>% 
+  str_extract("(?<=RX Strength: )\\s*\\-*[0-9.]+")
+
+# (?<=…)  is a special regex expression for positive lookbehind
+
+signals <- cbind(signals, strength)
+signals
+```

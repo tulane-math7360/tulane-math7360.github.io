@@ -140,19 +140,19 @@ There is a wealth of data on internet. How to scrape them and analyze them?
   as.integer())
 ```
 
-    ```{r}
-    # Using CSS selectors to scrap the Movie runtime section
-    runtime_data_html <- html_nodes(webpage, '.runtime')
-    # Converting the runtime data to text
-    runtime_data <- html_text(runtime_data_html)
-    # Let's have a look at the runtime
-    head(runtime_data)
-    # Data-Preprocessing: removing mins and converting it to numerical
-    runtime_data <- str_replace(runtime_data, " min", "")
-    runtime_data <- as.numeric(runtime_data)
-    #Let's have another look at the runtime data
-    head(runtime_data)
-    ```
+```{r}
+# Using CSS selectors to scrap the Movie runtime section
+runtime_data_html <- html_nodes(webpage, '.runtime')
+# Converting the runtime data to text
+runtime_data <- html_text(runtime_data_html)
+# Let's have a look at the runtime
+head(runtime_data)
+# Data-Preprocessing: removing mins and converting it to numerical
+runtime_data <- str_replace(runtime_data, " min", "")
+runtime_data <- as.numeric(runtime_data)
+#Let's have another look at the runtime data
+head(runtime_data)
+```
 
 ### Genre
 
@@ -208,7 +208,8 @@ There is a wealth of data on internet. How to scrape them and analyze them?
 
 ### Director
 
--
+- [CSS selector reference](https://www.w3schools.com/cssref/css_selectors.asp)
+
     ```{r}
     # Using CSS selectors to scrap the directors section
     (directors_data_html <- html_nodes(webpage,'.text-muted+ p a:nth-child(1)'))

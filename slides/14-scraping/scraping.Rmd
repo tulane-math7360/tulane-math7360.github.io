@@ -400,7 +400,7 @@ library("tidyverse")
 library("rvest")
 ```
 
-Open up a browser
+### Open up a browser
 
 ```{r}
 rD <- rsDriver(browser="firefox", port=7360L, verbose=F)
@@ -432,7 +432,7 @@ Click on the button `Go!`
 remDr$findElements("id", "btnSub")[[1]]$clickElement()
 ```
 
-Extract data from HTML
+### Extract data from HTML
 
 - save HTML to an object
 

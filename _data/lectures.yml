@@ -142,3 +142,8 @@
   filename: lab_07_stringr_keys
   dirname: slides/lab-07-stringr
   tldr: "Week 7 lab 7 solution"
+
+- title: "10/07/2020 Lecture - Linear Models"
+  filename: linear_model
+  dirname: slides/15-linear_model
+  tldr: "Week 8 lecture 14"

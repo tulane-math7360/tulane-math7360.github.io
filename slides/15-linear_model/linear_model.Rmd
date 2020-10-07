@@ -19,7 +19,7 @@ knitr::opts_chunk$set(fig.align = 'center', cache = FALSE)
 
 - HW2 due this Friday
 
-- Book: **Julian Farway**,  _Extending the Linear Model with R_, 2nd Edition, CRC Press (2016)
+- Book: **Julian Faraway**,  _Extending the Linear Model with R_, 2nd Edition, CRC Press (2016)
 
 
 ```{r}

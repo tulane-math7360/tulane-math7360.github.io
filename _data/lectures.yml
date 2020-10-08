@@ -147,3 +147,8 @@
   filename: linear_model
   dirname: slides/15-linear_model
   tldr: "Week 8 lecture 14"
+
+- title: "10/09/2020 Lab 8 - scraping"
+  filename: lab_08_scraping
+  dirname: slides/lab-08-scraping
+  tldr: "Week 8 lab 8"

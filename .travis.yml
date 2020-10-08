@@ -1,2 +1,22 @@
 language: r
-
+r:
+  - release
+cache: packages
+os:
+  - linux
+  - osx
+  - windows
+r_packages:
+  - rmarkdown
+  - neotoma
+  - purrr
+  - ggplot2
+  - plyr
+  - reshape2
+  - mgcv
+  - Bchron
+  - viridis
+  - dplyr
+  - readr
+  - gridExtra
+#http://www.goring.org/resources/Adding_CI_To_RMarkdown.html

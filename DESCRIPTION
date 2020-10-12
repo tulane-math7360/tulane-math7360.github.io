@@ -1,0 +1,8 @@
+Package: tulane_math_7360_slides
+Title: all slides of Math 7360 Data Analysis at Tulane University
+Version: 0.1
+Authors@R: person("Xiang", "Ji", email = "xji4@tulane.edu", role = c("aut", "cre"))
+Description: Checks each slides builds
+Depends: R (>= 4.0.0)
+LazyData: true
+

@@ -1,16 +1,20 @@
 language: r
+
 r:
   - release
-cache: packages
+
 os:
   - linux
   - osx
   - windows
+
+cache:
+  packages: yes
+
 r_packages:
   - rmarkdown
   - neotoma
   - purrr
-  - ggplot2
   - plyr
   - reshape2
   - mgcv
@@ -19,4 +23,9 @@ r_packages:
   - dplyr
   - readr
   - gridExtra
+  - faraway
+  - tidyverse
+  - gtsummary
+  - MASS
+  - splines
 #http://www.goring.org/resources/Adding_CI_To_RMarkdown.html

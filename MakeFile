@@ -1,0 +1,6 @@
+# MakeFile
+linear_model: slides/15-linear_model/linear_model.Rmd
+	Rscript -e 'rmarkdown::render(c("$<"))'
+
+clean:
+  rm -rf *.html *.md *.docx figure/ cache/

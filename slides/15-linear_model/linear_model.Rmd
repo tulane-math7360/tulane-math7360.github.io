@@ -134,6 +134,12 @@ str(lmod)
 coef(lmod)
 ```
 
+- interpreting the partial regression coefficients:
+
+    - __Geometric interpretation__: The partial regression coefficient $\beta_j$ associated with the predictor $x_j$ is the slope of the regression plane in the $x_j$ direction.  Imagine taking a "slice" of the regression plane.  In the terminology of calculus, $\beta_j$ is also the partial derivative of the regression plane with respect to the predictor $x_j$.
+    
+    - __Verbal interpretation__: The partial regression coefficient $\beta_j$ associated with predictor $x_j$ is the slope of the linear association between $y$ and $x_j$ _while controlling for the other predictors in the model_ (i.e., holding them constant).
+
 - The **fitted values** or **predicted values** are
 $$
 \widehat{\mathbf{y}} = \mathbf{X} \widehat{\boldsymbol{\beta}}
@@ -290,7 +296,7 @@ plot(lmodi)
 
 - The **scale-location plot** plots $\sqrt{|\widehat{\epsilon}_i|}$ vs fitted values and serves similar purpose as the residual-fitted value plot.  
 
-- The **QQ plot** checks for the normality assumption.  It plots residuals vs the theoretical quantiles from a standard normal distribution $\Phi^{-1}\left( \frac{i}{n+1} \right)$, $i=1,\ldots,n$.
+- The **QQ plot** checks for the normality assumption.  It plots sorted residuals vs the theoretical quantiles from a standard normal distribution $\Phi^{-1}\left( \frac{i}{n+1} \right)$, $i=1,\ldots,n$.
 
 - **Residual-leverage plot**. The fitted values are
 $$
@@ -354,39 +360,51 @@ p-values are not reported because inference for robust model is much harder than
 
 - Transformations of predictors are less problematic. 
 
-    - Consider using _orthogonal polynomials_ on the predictor `cperAA`. 
-```{r}
-plmodi <- lm(undercount ~ cperAA + poly(cpergore, 4) + usage + equip, gavote)
-# summary(plmodi)
-plmodi %>%
-  tbl_regression() %>%
-  bold_labels() %>%
-  bold_p(t = 0.05)
-```
+    - Consider using _orthogonal polynomials_ on the predictor `cpergore`.
+
+    ```{r}
+    plmodi <- lm(undercount ~ cperAA + poly(cpergore, 4) + usage + equip, gavote)
+    # summary(plmodi)
+    plmodi %>%
+      tbl_regression() %>%
+      bold_labels() %>%
+      bold_p(t = 0.05)
+    ```
 
     `termplot` graphically summarizes the effect of each predictor. `terms` argument of `termplot` function specifies which term to plot. Pratial residuals are predictor values plus residual values.
-```{r}
-termplot(plmodi, partial.resid = TRUE, terms = 2)
-```
+    
+    ```{r}
+    termplot(plmodi, partial.resid = TRUE, terms = 2)
+    ```
 
-    - _B-slines_:
-```{r}
-library(splines)
-blmodi <- lm(undercount ~ cperAA + bs(cpergore, 4) + usage + equip, gavote)
-termplot(blmodi, partial.resid = TRUE, terms = 2)
-```
+    - _B-splines_:
+
+    ```{r}
+    library(splines)
+    blmodi <- lm(undercount ~ cperAA + bs(cpergore, 4) + usage + equip, gavote)
+    termplot(blmodi, partial.resid = TRUE, terms = 2)
+    ```
 
 ## Variable selection
 
 Variable selection concerns the problem of selecting the best set of variables to put in a model. There are several approaches and it is still an active research area. 
 
-- **Exhaustive search**, also called **all-subset regression**, enumerates all $2^p$ submodels and selects the best one according to a criterion such as the adjusted $R^2$. The `regsubsets` function in the `leaps` package implements this search. The implementation only applies to quantitative predictors.
+- **Exhaustive search**, also called **all-subset regression**, enumerates all $2^p$ submodels and selects the best one according to a criterion such as the adjusted-$R^2$. The `regsubsets` function in the `leaps` package implements this search. The implementation only applies to quantitative predictors.
+
+    - Adjusted-$R^2$ penalizes $R^2$ for larger models.  The model with the largest Adj-$R^2$ wins.
+    
+    $$
+    \mbox{Adj-}R^2 = 1 - \frac{n - 1}{n - p} (1 - R^2)
+    $$
 
 - When there are many predictors, all-subset regression quickly becomes computationally infeasible. **Stepwise regression** does heuristic search. A popular criterion is the **Akaike Information Criterion** (AIC)
 $$
 \text{AIC} = - 2 \cdot \text{maximum log-likelihood} + 2p,
 $$
 where $p$ is the number of parameters. We start with a big model that includes all two-way interactions between qualitative predictors and all two-way interactions between qualitative and quantitative predictors
+
+    - The model with the lowest AIC wins.
+
 ```{r}
 biglm <- lm(undercount ~ (equip + econ + usage + atlanta)^2 + (equip + econ + 
   usage + atlanta) * (perAA + pergore), gavote)

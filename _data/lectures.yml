@@ -152,3 +152,8 @@
   filename: lab_08_scraping
   dirname: slides/lab-08-scraping
   tldr: "Week 8 lab 8"
+
+- title: "10/09/2020 Lab 8 - scraping"
+  filename: lab_08_scraping
+  dirname: slides/lab-08-scraping_keys
+  tldr: "Week 8 lab 8 solutions"

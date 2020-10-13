@@ -8,8 +8,7 @@ os:
   - osx
 
 script:
-  make linear_model
-  make clean
+  Rscript -e 'rmarkdown::render("slides/15-linear_model/linear_model.Rmd")'
 
 cache:
   packages: yes

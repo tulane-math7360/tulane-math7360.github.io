@@ -11,6 +11,7 @@ os:
 
 script:
   Rscript -e 'rmarkdown::render("slides/15-linear_model/linear_model.Rmd")'
+  Rscript -e 'rmarkdown::render("slides/16-logistic_regression/logistic_regression.Rmd")'
 
 cache:
   packages: yes
@@ -32,4 +33,7 @@ r_packages:
   - gtsummary
   - MASS
   - splines
+  - caret
+  - glmnet
+  - pROC
 #http://www.goring.org/resources/Adding_CI_To_RMarkdown.html

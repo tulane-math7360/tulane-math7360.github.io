@@ -157,3 +157,8 @@
   filename: lab_08_scraping
   dirname: slides/lab-08-scraping_keys
   tldr: "Week 8 lab 8 solutions"
+
+- title: "10/13/2020 Lecture - Logistic Regression"
+  filename: logistic_regression
+  dirname: slides/16-logistic_regression
+  tldr: "Week 9 lecture 16"

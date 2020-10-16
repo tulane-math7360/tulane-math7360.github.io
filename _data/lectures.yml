@@ -162,3 +162,8 @@
   filename: logistic_regression
   dirname: slides/16-logistic_regression
   tldr: "Week 9 lecture 16"
+
+- title: "10/16/2020 Lab 9 - linear models"
+  filename: lab_09_linear_models
+  dirname: slides/lab-09-linear_models
+  tldr: "Week 9 lab 9"

@@ -457,7 +457,7 @@ xtabs(round(pp, 3) ~ econ + equip, pdf)
 pdf <- tibble(econ  = rep("middle", 15), 
               equip = rep(levels(gavote$equip), rep(3, 5)), 
               perAA = rep(c(.11, 0.23, 0.35), 5))
-pp <- predict(finalm, new = pdf)
+pp <- predict(finalm, new = pdf) # interval = "confidence"/"prediction"
 propAA <- gl(3, 1, 15, labels = c("low", "medium", "high"))
 xtabs(round(pp, 3) ~ propAA + equip, pdf)
 ```

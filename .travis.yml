@@ -12,6 +12,7 @@ os:
 script:
   Rscript -e 'rmarkdown::render("slides/15-linear_model/linear_model.Rmd")'
   Rscript -e 'rmarkdown::render("slides/16-logistic_regression/logistic_regression.Rmd")'
+  Rscript -e 'rmarkdown::render("slides/17-binomial_regression/binomial_regression.Rmd")'
 
 cache:
   packages: yes

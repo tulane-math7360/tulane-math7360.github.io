@@ -360,4 +360,3 @@ modb <- gam(survive / total ~ location + period,
             family = betar(), data = troutegg)
 summary(modb)
 ```
-We see that this model differs from the best model chosen by AIC by replacing the predictor `bmi` by `weight`.

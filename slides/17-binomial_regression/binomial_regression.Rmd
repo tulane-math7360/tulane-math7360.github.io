@@ -1,5 +1,5 @@
 ---
-title: "Logistic Regression"
+title: "Binomial Regression"
 author: "Dr. Xiang Ji @ Tulane University"
 date: "Oct 21, 2020"
 output:

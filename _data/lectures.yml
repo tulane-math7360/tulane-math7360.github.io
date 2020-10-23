@@ -172,3 +172,8 @@
   filename: binomial_regression
   dirname: slides/17-binomial_regression
   tldr: "Week 10 lecture 18"
+
+- title: "10/23/2020 Lab 10 - binomial regression"
+  filename: lab_10_binomial_regression
+  dirname: slides/lab-10-binomial_regression
+  tldr: "Week 10 lab 10"

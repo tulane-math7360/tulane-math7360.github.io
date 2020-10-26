@@ -177,3 +177,8 @@
   filename: lab_10_binomial_regression
   dirname: slides/lab-10-binomial_regression
   tldr: "Week 10 lab 10"
+
+- title: "10/26/2020 Lecture - Count Regression"
+  filename: count_regression
+  dirname: slides/18-count_regression
+  tldr: "Week 11 lecture 19"

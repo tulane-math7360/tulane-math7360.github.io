@@ -14,6 +14,7 @@ script:
   Rscript -e 'rmarkdown::render("slides/16-logistic_regression/logistic_regression.Rmd")'
   Rscript -e 'rmarkdown::render("slides/17-binomial_regression/binomial_regression.Rmd")'
   Rscript -e 'rmarkdown::render("slides/18-count_regression/count_regression.Rmd")'
+  Rscript -e 'rmarkdown::render("slides/19-GLM/GLM.Rmd")'
 
 cache:
   packages: yes
@@ -39,4 +40,5 @@ r_packages:
   - glmnet
   - pROC
   - pscl
+  - sandwich
 #http://www.goring.org/resources/Adding_CI_To_RMarkdown.html

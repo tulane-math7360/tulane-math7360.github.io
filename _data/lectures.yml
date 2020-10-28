@@ -182,3 +182,8 @@
   filename: count_regression
   dirname: slides/18-count_regression
   tldr: "Week 11 lecture 19"
+
+- title: "10/28/2020 Lecture - GLM"
+  filename: GLM
+  dirname: slides/19-GLM
+  tldr: "Week 11 lecture 20"

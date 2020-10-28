@@ -234,7 +234,7 @@ glm.nb(Species ~ . - Endemics - Island, data = gala) %>%
 
 ## Zero-inflated count models
 
-- The `bioChemists` data set contains 915 biochemistry graduate students. The outcome of interest is the number of articles procuded during the last three years of the PhD.
+- The `bioChemists` data set contains 915 biochemistry graduate students. The outcome of interest is the number of articles produced during the last three years of the PhD.
 ```{r}
 library(pscl)
 

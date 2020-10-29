@@ -41,4 +41,8 @@ r_packages:
   - pROC
   - pscl
   - sandwich
+  - bench
+  - microbenchmark
+  - profvis
+  - ggbeeswarm
 #http://www.goring.org/resources/Adding_CI_To_RMarkdown.html

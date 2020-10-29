@@ -32,7 +32,7 @@ Now we have learnt regression modeling of binomial, multinomial, and count respo
 
 ### Definition
 
-In GLM, the distribution of $Y$ is from the exponential familty of distributions of form
+In GLM, the distribution of $Y$ is from the exponential family of distributions of form
 $$
   f(y \mid \theta, \phi) = \exp \left[ \frac{y \theta - b(\theta)}{a(\phi)} + c(y, \phi) \right].
 $$

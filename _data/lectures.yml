@@ -187,3 +187,8 @@
   filename: GLM
   dirname: slides/19-GLM
   tldr: "Week 11 lecture 20"
+
+- title: "10/30/2020 Lab 11 - GLM"
+  filename: lab_11_GLM
+  dirname: slides/lab-11-GLM
+  tldr: "Week 11 lab 11"

@@ -16,6 +16,10 @@ rm(list = ls()) # clean-up workspace
 knitr::opts_chunk$set(fig.align = 'center', cache = FALSE)
 ```
 
+## Announcement
+
+- Make-up day for lab on November 8
+
 ## Acknowledgement
 
 Dr. Hua Zhou's [slides](https://ucla-biostat203b-2020winter.github.io/slides/15-nn/nn1.html)

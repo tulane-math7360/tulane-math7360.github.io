@@ -1,0 +1,139 @@
+---
+title: "Neural Networks"
+author: "Dr. Xiang Ji @ Tulane University"
+date: "Nov 2, 2020"
+output:
+  html_document:
+    toc: true
+    toc_depth: 4  
+subtitle: MATH-7360 Data Analysis
+csl: ../apa.csl
+---
+
+
+```{r setup, include=FALSE}
+rm(list = ls()) # clean-up workspace
+knitr::opts_chunk$set(fig.align = 'center', cache = FALSE)
+```
+
+## Acknowledgement
+
+Dr. Hua Zhou's [slides](https://ucla-biostat203b-2020winter.github.io/slides/15-nn/nn1.html)
+
+
+## Recurrent neural networks (RNN)
+
+- Sources: 
+    - <http://web.stanford.edu/class/cs224n/>   
+    - <https://colah.github.io/posts/2015-08-Understanding-LSTMs/>  
+    - <http://karpathy.github.io/2015/05/21/rnn-effectiveness/>  
+    - <http://www.wildml.com/2015/09/recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/>  
+    
+- MLP (multi-layer perceptron) and CNN (convolutional neural network) are examples of **feed forward neural network**, where connections between the units do not form a cycle.  
+
+- MLP and CNN accept a fixed-sized vector as input (e.g. an image) and produce a fixed-sized vector as output (e.g. probabilities of different classes). 
+
+- **Reccurent neural networks (RNN)** instead have loops, which can be un-rolled into a sequence of MLP.
+
+<p align="center">
+<!-- ![](./colah-rnn-rolled.png){width=100px} -->
+![](./colah-rnn-unrolled.png){width=500px}
+</p>
+
+- RNNs allow us to operate over sequences of vectors: sequences in the input, the output, or in the most general case both.
+
+- Applications of RNN: 
+
+    - [Language modeling and generating text](http://karpathy.github.io/2015/05/21/rnn-effectiveness/). E.g., search prompt, messaging/email prompt, ...
+    
+    <p align="center">
+    ![](./genearted-alggeom-latex.jpg){width=500px}
+    </p>
+    
+    Above: generated (fake) LaTeX on algebraic geometry; see <http://karpathy.github.io/2015/05/21/rnn-effectiveness/>.
+
+    - **NLP/Speech**: transcribe speech to text, machine translation, sentiment analysis, ...
+    <p align="center">
+    ![](./machine-translation.png){width=500px}
+    </p>
+    
+    - **Computer vision**: image captioning, video captioning,  ...
+    <p align="center">
+    ![](./image-captioning.png){width=500px}
+    </p>
+
+- RNNs accept an input vector $x$ and give you an output vector $y$. However, crucially this output vector’s contents are influenced not only by the input you just fed in, but also on the entire history of inputs you’ve fed in the past.
+
+- Short-term dependencies: to predict the last word in "the clouds are in the _sky_":
+<p align="center">
+![](./colah-rnn-shorttermdepdencies.png){width=500px}
+</p>
+
+- Long-term dependencies: to predict the last word in "I grew up in France... I speek fluent _French_":
+<p align="center">
+![](./colah-rnn-longtermdependencies.png){width=500px}
+</p>
+
+- Typical RNNs are having trouble with learning long-term dependencies.
+<p align="center">
+![](./colah-lstm3-simplernn.png){width=500px}
+</p>
+
+- **Long Short-Term Memory networks (LSTM)** are a special kind of RNN capable of learning long-term dependencies. 
+<p align="center">
+![](./colah-lstm3-chain.png){width=500px}
+![](./colah-lstm2-notation.png){width=500px}
+</p>
+
+    The **cell state** allows information to flow along it unchanged.
+    <p align="center">
+    ![](./colah-lstm3-c-line.png){width=500px}
+    </p>
+    The **gates** give the ability to remove or add information to the cell state.
+    <p align="center">
+    ![](./colah-lstm3-gate.png){width=100px}
+    </p>
+    
+## Generative Adversarial Networks (GANs)
+
+> The coolest idea in deep learning in the last 20 years.  
+> - Yann LeCun on GANs.
+
+- Sources: 
+    - <https://sites.google.com/view/cvpr2018tutorialongans/>   
+    - <https://medium.com/ai-society/gans-from-scratch-1-a-deep-introduction-with-code-in-pytorch-and-tensorflow-cb03cdcdba0f>    
+    - <https://skymind.ai/wiki/generative-adversarial-network-gan>   
+
+- Applications:
+
+    - Image-to-image translation 
+    
+    <p align="center">
+    ![](./image-to-image-translation.jpg){width=600px}
+    </p>
+
+    * AI-generated celebrity photos: <https://www.youtube.com/watch?v=G06dEcZ-QTg>
+    
+    * Self play
+
+<p align="center">
+![](./alpha-go.png){width=600px}
+</p>
+
+* GAN:
+
+<p align="center">
+![](./gan.jpg){width=600px}
+</p>
+
+
+* Value function of GAN
+$$
+\min_G \max_D V(D, G) = \mathbb{E}_{x \sim p_{\text{data}}(x)} [\log D(x)] + \mathbb{E}_{z \sim p_z(z)} [\log (1 - D(G(z)))].
+$$
+
+* Training GAN
+
+<p align="center">
+![](./training-gan.png){width=600px}
+</p>

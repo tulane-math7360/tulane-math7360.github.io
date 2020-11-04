@@ -197,3 +197,8 @@
   filename: neural_network
   dirname: slides/21-Neural_Network
   tldr: "Week 12 lecture 21"
+
+- title: "11/04/2020 Lecture - Neural Network cont."
+  filename: neural_network_2
+  dirname: slides/21-Neural_Network
+  tldr: "Week 12 lecture 22"

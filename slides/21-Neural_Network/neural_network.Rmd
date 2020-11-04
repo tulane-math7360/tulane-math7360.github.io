@@ -312,17 +312,17 @@ net-5: two hidden layers, locally connected, two levels of weight sharing (was t
 ![](./esl-fig-11-10.png){width=500px}
 </p>    
 
-    Results (320 training cases, 160 test cases):   
+Results (320 training cases, 160 test cases):
 
-    | network | links | weights | accuracy |
-    |---------|-------|---------|----------|
-    | net 1   | 2570  | 2570    | 80.0%    |
-    | net 2   | 3124  | 3214    | 87.0%    |
-    | net 3   | 1226  | 1226    | 88.5%    |
-    | net 4   | 2266  | 1131    | 94.0%    |
-    | net 5   | 5194  | 1060    | 98.4%    |  
+  | network | links | weights | accuracy |
+  |---------|-------|---------|----------|
+  | net 1   | 2570  | 2570    | 80.0%    |
+  | net 2   | 3124  | 3214    | 87.0%    |
+  | net 3   | 1226  | 1226    | 88.5%    |
+  | net 4   | 2266  | 1131    | 94.0%    |
+  | net 5   | 5194  | 1060    | 98.4%    |  
 
-    Net-5 and similar networks were start-of-the-art in early 1990s.
+Net-5 and similar networks were state-of-the-art in early 1990s.
 
 - On the larger benchmark dataset **MNIST** (60,000 training images, 10,000 testing images), accuracies of following methods were reported:
 

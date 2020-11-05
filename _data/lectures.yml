@@ -202,3 +202,8 @@
   filename: neural_network_2
   dirname: slides/21-Neural_Network
   tldr: "Week 12 lecture 22"
+
+- title: "11/06/2020 Lab 12 - Neural Network"
+  filename: lab_12_neural_network
+  dirname: slides/lab-12-Neural_Network
+  tldr: "Week 12 lab 12"

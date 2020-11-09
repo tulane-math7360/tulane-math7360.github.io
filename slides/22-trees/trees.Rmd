@@ -61,6 +61,41 @@ ozone %>%
 
 - An examination of the data reveals several nonlinear relationships indicating that a linear regression might not be appropriate without the addition of some transformation.
 
+
+## Fit a regression tree
+
+```{r}
+library(rpart)
+(tmod <- rpart(O3 ~ ., ozone))
+```
+
+- The first split (nodes 2 and 3) is on temperature:  
+
+    - 215 observations have temperatures less than 67.5 with a mean response value of $7.4$.
+    
+    - 116 observations have temperatures greater than 67.5 with a mean response value of $20$.
+
+- The total RSS has been reduced from $21115.00$ to $4114.30 + 5478.40 = 9592.70$.
+
+More substantial output
+
+```{r, eval = FALSE}
+summary(tmod)
+```
+
+Graphical displays
+
+```{r}
+plot(tmod)
+text(tmod)
+
+plot(tmod,compress=T,uniform=T,branch=0.4)
+text(tmod)
+
+library(rpart.plot)
+rpart.plot(tmod, type = 2)
+```
+
 ## Recursive partitioning regression algorithm
 
 1. Consider all partitions of the region of the predictors into two regions parallel to one of the axes. $N-1$ possible partitions for each predictor with a total of $(N-1)p$ partitions.
@@ -107,39 +142,6 @@ When predict the response for a new value with missing values
 
 
 
-## Fit a regression tree
-
-```{r}
-library(rpart)
-(tmod <- rpart(O3 ~ ., ozone))
-```
-
-- The first split (nodes 2 and 3) is on temperature:  
-
-    - 215 observations have temperatures less than 67.5 with a mean response value of $7.4$.
-    
-    - 116 observations have temperatures greater than 67.5 with a mean response value of $20$.
-
-- The total RSS has been reduced from $21115.00$ to $4114.30 + 5478.40 = 9592.70$.
-
-More substantial output
-
-```{r, eval = FALSE}
-summary(tmod)
-```
-
-Graphical displays
-
-```{r}
-plot(tmod)
-text(tmod)
-
-plot(tmod,compress=T,uniform=T,branch=0.4)
-text(tmod)
-
-library(rpart.plot)
-rpart.plot(tmod, type = 2)
-```
 
 ## Diagonostics
 

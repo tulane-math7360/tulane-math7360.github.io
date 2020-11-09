@@ -160,6 +160,7 @@ Let's predict the response for a new value, using the median value as an example
 
 ```{r}
 (x0 <- apply(ozone[,-1], 2, median))
+rpart.plot(tmod, type = 2)
 predict(tmod,data.frame(t(x0)))
 ```
 
@@ -180,7 +181,7 @@ predict(tmod,data.frame(t(x0)))
 
     - *leave one out*: For a given tree, leave out one observation, recalculate the tree and predict the left-over observation. Repeat for all observations
     
-    - $\sum_{j=1}^n (y_j - \hat f_{(j)}(x_j))^2$ where $\hat f_{(j)$ denotes the predicted value of input $x_j$ given the tree given built without $x_j$
+    - $\sum_{j=1}^n (y_j - \hat f_{(j)}(x_j))^2$ where $\hat f_{(j)}$ denotes the predicted value of input $x_j$ given the tree given built without $x_j$
     
     - k-fold cross-validation randomly divide the data into k equal parts and use $k-1$ parts to predict the cases in the remaining part. k = 10 is typical choice.
   
@@ -206,7 +207,7 @@ predict(tmod,data.frame(t(x0)))
     
         - take the nine-split tree
     
-    - can select the smallest tree iwht a CV error within one standard error of the minimum.
+    - can select the smallest tree with a CV error within one standard error of the minimum.
     
         - $0.350 + 0.035 = 0.385$, take the seven-split tree.
         

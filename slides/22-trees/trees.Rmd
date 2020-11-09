@@ -18,7 +18,13 @@ knitr::opts_chunk$set(fig.align = 'center', cache = FALSE)
 
 ## Announcement
 
-To be added
+- We will go through HW3 keys on Friday, no lab session
+
+- Presentations will be on zoom
+
+    - illustrate your project to your peers
+    
+    - Do not assume people ever read your paper
 
 ## Acknowledgement
 

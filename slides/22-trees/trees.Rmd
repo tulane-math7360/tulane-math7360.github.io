@@ -339,11 +339,11 @@ importance(fmod)
 
 Identification of the sex and species of an historical specimen of kangaroo (`kanga` dataset in faraway package).
 
-    - Three possible species: _Giganteus_, _Melanops_ and _Fuliginosus_
-    
-    - The sex of the animal
-    
-    - 18 skull measurements
+  - Three possible species: _Giganteus_, _Melanops_ and _Fuliginosus_
+  
+  - The sex of the animal
+  
+  - 18 skull measurements
 
 We form separate trees for identifying the sex and species.
 

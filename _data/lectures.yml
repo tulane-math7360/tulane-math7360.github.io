@@ -207,3 +207,8 @@
   filename: lab_12_neural_network
   dirname: slides/lab-12-Neural_Network
   tldr: "Week 12 lab 12"
+
+- title: "11/09/2020 Lecture - Trees"
+  filename: trees
+  dirname: slides/22-trees
+  tldr: "Week 13 lecture 23"

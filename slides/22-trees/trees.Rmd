@@ -136,6 +136,9 @@ text(tmod)
 
 plot(tmod,compress=T,uniform=T,branch=0.4)
 text(tmod)
+
+library(rpart.plot)
+rpart.plot(tmod, type = 2)
 ```
 
 ## Diagonostics

@@ -217,3 +217,8 @@
   filename: svm
   dirname: slides/23-svm
   tldr: "Week 13 lecture 24"
+
+- title: "11/11/2020 Lecture - R programming"
+  filename: advr
+  dirname: slides/20-R_programming
+  tldr: "Week 13 lecture 24"

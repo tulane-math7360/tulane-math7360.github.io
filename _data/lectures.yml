@@ -212,3 +212,8 @@
   filename: trees
   dirname: slides/22-trees
   tldr: "Week 13 lecture 23"
+
+- title: "11/11/2020 Lecture - Support Vector Machine"
+  filename: svm
+  dirname: slides/23-svm
+  tldr: "Week 13 lecture 24"

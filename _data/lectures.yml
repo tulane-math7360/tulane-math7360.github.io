@@ -32,11 +32,6 @@
   filename: Data_Structure
   dirname: slides/05-Data_structure
   tldr: "Week 3 lecture 4"
-  
-- title: "08/31/2020 Lab 2 solutions"
-  filename: lab_02_Solutions
-  dirname: slides/lab-02-Basics
-  tldr: "Week 3 solution"
 
 - title: "09/02/2020 Lecture - Functions"
   filename: Functions
@@ -45,11 +40,6 @@
 
 - title: "09/04/2020 Lab 3"
   filename: lab_03_Functions
-  dirname: slides/lab-03-Functions
-  tldr: "Week 3 lab 3"
-
-- title: "09/08/2020 Lab 3 solutions"
-  filename: lab_03_Solutions
   dirname: slides/lab-03-Functions
   tldr: "Week 3 lab 3"
 
@@ -98,11 +88,6 @@
   dirname: slides/10-ggplot2
   tldr: "Week 6 lecture 9"
 
-- title: "09/21/2020 Lab 5 solutions"
-  filename: lab_04_solutions
-  dirname: slides/lab-04-Git_ggplot
-  tldr: "Week 6 lab 5 solution"
-
 - title: "09/23/2020 Lecture - Visualizing Longitudinal Data Using brolgar"
   filename: longitudinal
   dirname: slides/11-vis
@@ -138,11 +123,6 @@
   dirname: slides/14-scraping
   tldr: "Week 8 lecture 13"
 
-- title: "10/05/2020 Lab 7 solutions"
-  filename: lab_07_stringr_keys
-  dirname: slides/lab-07-stringr
-  tldr: "Week 7 lab 7 solution"
-
 - title: "10/07/2020 Lecture - Linear Models"
   filename: linear_model
   dirname: slides/15-linear_model
@@ -152,11 +132,6 @@
   filename: lab_08_scraping
   dirname: slides/lab-08-scraping
   tldr: "Week 8 lab 8"
-
-- title: "10/09/2020 Lab 8 - scraping"
-  filename: lab_08_scraping_keys
-  dirname: slides/lab-08-scraping
-  tldr: "Week 8 lab 8 solutions"
 
 - title: "10/14/2020 Lecture - Logistic Regression"
   filename: logistic_regression
